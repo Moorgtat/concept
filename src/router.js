@@ -7,14 +7,14 @@ export const router = new Router({
     mode: 'history',
     routes: [
         {
-            path: '/hello',
-            name: 'HelloWorld',
-            component: () => import('./components/HelloWorld')
+            path: '/',
+            name: 'Home',
+            component: () => import('./components/Home')
         },
         {
-            path: '/bye',
-            name: 'Bye',
-            component: () => import('./components/Bye')
+            path: '/menu',
+            name: 'Menu',
+            component: () => import('./components/Menu')
         }
     ]
 });
