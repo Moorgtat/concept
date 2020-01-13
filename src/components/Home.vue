@@ -20,7 +20,9 @@
       </div>
 
       <div id="presentation-container">
-          <h1>Texte</h1>
+          <div id="texte-presentation">
+              <h1>Texte</h1>
+          </div>
       </div>
 
       <div id="bandeau-3p-container">
@@ -68,20 +70,31 @@ export default {
 
     #navbar-container {
         border: solid 2px black;
-    
+
     }
 
     #carroussel-container {
         border: solid 2px black;
-        width: 100%;
         height: 100vh;
-        background-color: darkgrey;
+        background-image: url("../assets/crt-1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
     }
 
     #presentation-container {
-
+        border:1px solid black;
+        width: 100%;
+        height: 200px;
+        line-height:200px;
+        text-align:center;
     }
-
+    #texte-presentation {
+        border:1px solid black;
+        vertical-align:middle;
+        display:inline-block;
+        line-height:1.2;
+    }
     #bandeau-3p-container {
 
     }
