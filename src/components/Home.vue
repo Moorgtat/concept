@@ -1,63 +1,86 @@
 <template>
-  <div id="Home">
+    <div id="Home">
 
-      <div id="navbar-container">
-          <div id="logo">
-              <h1>Logo</h1>
-          </div>
-          <div id="menu">
-              <h1>Navbar</h1>
-              <ul>
-                  <li>Accueil</li>
-                  <li>Menu</li>
-                  <li>Nous contacter</li>
-              </ul>
-          </div>
-      </div>
-
-      <div id="carroussel-container">
-          <h1>Carroussel Top</h1>
-      </div>
-
-      <div id="presentation-container">
-          <div id="texte-presentation">
-              <h1>Texte</h1>
-          </div>
-      </div>
-
-      <div id="bandeau-3p-container">
-          <h1>Photos-Trois</h1>
-      </div>
-
-      <div id="bandeau-2p1-container">
-          <h1>Photos-Deux</h1>
-      </div>
-
-      <div id="bandeau-2p2-container">
-          <h1>Photos-Deux</h1>
-      </div>
-
-      <div id="explication-container">
-          <h1>Texte</h1>
-      </div>
-
-      <div id="carroussel-avis-container">
-          <h1>Carroussel Avis</h1>
-      </div>
-
-          <div id="footer-container">
-              <h1>Footer</h1>
-              <h1>Adresse</h1>
-              <h1>Divers</h1>
-          </div>
+        <div id="navbar-container">
+            <div id="logo">
+                <h1>Logo</h1>
+            </div>
+            <div id="menu">
+                <h1>Navbar</h1>
+                <ul>
+                    <li>Accueil</li>
+                    <li>Menu</li>
+                    <li>Nous contacter</li>
+                </ul>
+            </div>
+        </div>
 
 
-  </div>
+
+        <div id="caroussel-container">
+
+            <Carousel>
+                <Carousel-slide>
+                    slide one
+                    <img src="../assets/rest-one.jpg"/>
+                </Carousel-slide>
+                <Carousel-slide>
+                    slide two
+                    <img src="../assets/rest-two.jpg"/>
+                </Carousel-slide>
+                <Carousel-slide>
+                    slide three
+                    <img src="../assets/rest-three.jpg"/>
+                </Carousel-slide>
+            </Carousel>
+
+        </div>
+
+        <div id="presentation-container">
+            <div id="texte-presentation">
+                <h1>Texte</h1>
+            </div>
+        </div>
+
+        <div id="bandeau-3p-container">
+            <h1>Photos-Trois</h1>
+        </div>
+
+        <div id="bandeau-2p1-container">
+            <h1>Photos-Deux</h1>
+        </div>
+
+        <div id="bandeau-2p2-container">
+            <h1>Photos-Deux</h1>
+        </div>
+
+        <div id="explication-container">
+            <h1>Texte</h1>
+        </div>
+
+        <div id="caroussel-avis-container">
+            <h1>Carroussel Avis</h1>
+        </div>
+
+        <div id="footer-container">
+            <h1>Footer</h1>
+            <h1>Adresse</h1>
+            <h1>Divers</h1>
+        </div>
+
+
+    </div>
 </template>
 
 <script>
+    import Carousel from "@/components/carousel/Carousel";
+    import CarouselSlide from "@/components/carousel/CarouselSlide";
 export default {
   name: 'Home',
+    components: {
+      Carousel,
+      CarouselSlide
+    }
 }
 </script>
 
@@ -73,13 +96,7 @@ export default {
 
     }
 
-    #carroussel-container {
-        border: solid 2px black;
-        height: 100vh;
-        background-image: url("../assets/crt-1.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 50% 50%;
+    #caroussel-container {
     }
 
     #presentation-container {
