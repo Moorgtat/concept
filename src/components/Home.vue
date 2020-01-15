@@ -18,22 +18,17 @@
 
 
         <div id="caroussel-container">
-
             <Carousel>
                 <Carousel-slide>
-                    slide one
-                    <img src="../assets/rest-one.jpg"/>
+                    <img class="img-carousel img-one" src="../assets/rest-one.jpg"/>
                 </Carousel-slide>
                 <Carousel-slide>
-                    slide two
-                    <img src="../assets/rest-two.jpg"/>
+                    <img class="img-carousel img-two" src="../assets/rest-two.jpg"/>
                 </Carousel-slide>
                 <Carousel-slide>
-                    slide three
-                    <img src="../assets/rest-three.jpg"/>
+                    <img class="img-carousel img-three" src="../assets/rest-three.jpg"/>
                 </Carousel-slide>
             </Carousel>
-
         </div>
 
         <div id="presentation-container">
@@ -84,19 +79,23 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #Home {
-        border: solid 2px black;
-        width: 100%;
+
     }
 
     #navbar-container {
+        width: 100%;
         border: solid 2px black;
-
     }
 
     #caroussel-container {
+        width: 100%;
+    }
+
+    .img-carousel{
+        max-width: 100%;
+        max-height: 100%;
     }
 
     #presentation-container {
@@ -128,12 +127,8 @@ export default {
 
     }
 
-    #carroussel-avis-container {
-
-    }
-
     #footer-container {
 
     }
 
-</style>
+</stylescoped>
