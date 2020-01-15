@@ -20,13 +20,13 @@
         <div id="caroussel-container">
             <Carousel>
                 <Carousel-slide>
-                    <img class="img-carousel img-one" src="../assets/rest-one.jpg"/>
+                    <div class="img-carousel img-one"></div>
                 </Carousel-slide>
                 <Carousel-slide>
-                    <img class="img-carousel img-two" src="../assets/rest-two.jpg"/>
+                    <div class="img-carousel img-two"></div>
                 </Carousel-slide>
                 <Carousel-slide>
-                    <img class="img-carousel img-three" src="../assets/rest-three.jpg"/>
+                    <div class="img-carousel img-three"></div>
                 </Carousel-slide>
             </Carousel>
         </div>
@@ -80,9 +80,6 @@ export default {
 </script>
 
 <style scoped>
-    #Home {
-
-    }
 
     #navbar-container {
         width: 100%;
@@ -93,42 +90,36 @@ export default {
         width: 100%;
     }
 
-    .img-carousel{
-        max-width: 100%;
-        max-height: 100%;
+    .img-carousel {
+        width: 100%;
+        height: 100vh;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+
+    .img-carousel.img-one{
+        background-image: url("../assets/rest-one.jpg");
+    }
+    .img-carousel.img-two{
+        background-image: url("../assets/rest-two.jpg");
+    }
+    .img-carousel.img-three{
+        background-image: url("../assets/rest-three.jpg");
     }
 
     #presentation-container {
-        border:1px solid black;
+        border: 1px solid black;
         width: 100%;
         height: 200px;
-        line-height:200px;
-        text-align:center;
+        line-height: 200px;
+        text-align: center;
     }
+
     #texte-presentation {
-        border:1px solid black;
-        vertical-align:middle;
-        display:inline-block;
-        line-height:1.2;
-    }
-    #bandeau-3p-container {
-
+        border: 1px solid black;
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 1.2;
     }
 
-    #bandeau-2p1-container {
-
-    }
-
-    #bandeau-2p2-container {
-
-    }
-
-    #explication-container {
-
-    }
-
-    #footer-container {
-
-    }
-
-</stylescoped>
+</style>
