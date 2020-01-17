@@ -15,6 +15,11 @@ export const router = new Router({
             path: '/menu',
             name: 'Menu',
             component: () => import('./components/Menu')
+        },
+        {
+            path: '/contact',
+            name: 'Contact',
+            component: () => import('./components/Contact')
         }
     ]
 });
