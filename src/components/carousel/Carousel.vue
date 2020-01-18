@@ -52,7 +52,7 @@
 
     .carousel-nav {
         position: absolute;
-        top: 43%;
+        top: 45%;
         left: 9px;
         background-image: url(arrow-left.png);
         background-repeat: no-repeat;
