@@ -1,6 +1,6 @@
 <template>
     <div id="Home">
-        <div id="nav" :class="{black : navbarStatus}">
+        <div id="nav" :class="{ black : navbarStatus }">
             <div class="logo">
                 <a href="/"><logo></logo></a>
             </div>
@@ -28,35 +28,63 @@
         </div>
 
         <div id="presentation">
-            <div id="presentation-haut">
+            <div id="presentation-haut" :class="{ opacitos : animStatus }">
                 <font-awesome-icon icon="coffee"  size="2x"/>
+                <button @click="hauteurTest">Rafraichir la Hauteur</button>
+                <p> {{ hauteur }} </p>
             </div>
             <div id="texte-presentation">
-                <h1>Texte</h1>
+                <p>Texte</p>
             </div>
             <div>
-
+                <font-awesome-icon icon="coffee"  size="2x"/>
+                <font-awesome-icon icon="coffee"  size="2x"/>
+                <font-awesome-icon icon="coffee"  size="2x"/>
+                <font-awesome-icon icon="coffee"  size="2x"/>
+                <font-awesome-icon icon="coffee"  size="2x"/>
+            </div>
+        </div>
+<div id="test">
+        <div class="bandeau-trois-photos">
+            <div class="img3p-one">
+              <p> Test </p>
+            </div>
+            <div class="img3p-two">
+              <p> Test </p>
+            </div>
+            <div class="img3p-three">
+              <p> Test </p>
             </div>
         </div>
 
-        <div id="bandeau-trois-photos">
-            <h1>Photos-Trois</h1>
+        <div class="bandeau-deux-photos">
+            <div class="img2p-one">
+                <p> Test </p>
+            </div>
+            <div class="img2p-two">
+                <p> Test </p>
+            </div>
         </div>
 
-        <div id="bandeau-deux-photos">
-            <h1>Photos-Deux</h1>
+    <div class="bandeau-deux-photos">
+        <div class="img2p-one">
+            <p> Test </p>
         </div>
+        <div class="img2p-two">
+            <p> Test </p>
+        </div>
+    </div>
 
+</div>
 
         <div id="explication">
             <h1>Texte</h1>
+          <div id="caroussel-avis">
+              <h1>Carroussel Avis</h1>
+          </div>
         </div>
 
-        <div id="caroussel-avis">
-            <h1>Carroussel Avis</h1>
-        </div>
-
-        <div id="footer">
+        <div id="footer" :class="{ opacitos : animFooterStatus }">
             <h1>Footer</h1>
             <h1>Adresse</h1>
             <h1>Divers</h1>
@@ -78,12 +106,24 @@ export default {
     },
     data () {
       return {
-          navbarStatus: ""
+          navbarStatus: '',
+          animStatus: '',
+          animFooterStatus:'',
+          hauteur: ''
       }
   },
     methods: {
         handleScroll () {
             this.navbarStatus = !!(window.scrollY << 18);
+            this.animStatus = !!(window.scrollY <<  document.getElementById('carousel').offsetHeight);
+            this.animFooterStatus = !!(window.scrollY <<  document.getElementById('carousel').offsetHeight +
+                document.getElementById('presentation').offsetHeight +
+                document.getElementById('bandeau-trois-photos').offsetHeight +
+                document.getElementById('bandeau-deux-photos').offsetHeight  +
+                document.getElementById('explication').offsetHeight);
+        },
+        hauteurTest () {
+            return  this.hauteur = document.getElementById('carousel').offsetHeight;
         }
     },
     created () {
@@ -156,13 +196,13 @@ export default {
         background-size: cover;
     }
     .img-carousel.img-one{
-        background-image: url("../assets/rest-one.jpg");
+        background-image: url("../assets/food-one.jpg");
     }
     .img-carousel.img-two{
-        background-image: url("../assets/rest-two.jpg");
+        background-image: url("../assets/food-two.jpg");
     }
     .img-carousel.img-three{
-        background-image: url("../assets/rest-three.jpg");
+        background-image: url("../assets/food-three.jpg");
     }
 
     /*PRESENTATION*/
@@ -170,19 +210,84 @@ export default {
         border: 1px solid black;
         width: 100%;
         height: 200px;
-        line-height: 200px;
         text-align: center;
     }
 
     #texte-presentation {
         border: 1px solid black;
-        vertical-align: middle;
-        display: inline-block;
-        line-height: 1.2;
+        width: 100%;
+        height: 40px;
+
     }
 
-    #presentation-haut :hover {
+    .opacitos {
         transition: 0.5s;
-        opacity: 0.1;
+        opacity: 0.5;
     }
+
+
+    #test{
+        margin: 5px;
+    }
+
+    /*BANDEAU 3P*/
+
+    .bandeau-trois-photos{
+        margin-bottom: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height:200px;
+        height: 20vw;
+    }
+
+    .img3p-one{
+        background-position: 50% 50%;
+        width: 100%;
+        margin-right: 5px;
+        background-image: url("../assets/food-one.jpg");
+        background-size: cover;
+    }
+
+    .img3p-two{
+        background-position: 50% 50%;
+        width: 100%;
+        margin-right: 5px;
+        background-image: url("../assets/food-two.jpg");
+        background-size: cover;
+    }
+
+    .img3p-three{
+        background-position: 50% 50%;
+        width: 100%;
+        background-image: url("../assets/food-three.jpg");
+        background-size: cover;
+    }
+
+    /*BANDEAU 2P*/
+
+    .bandeau-deux-photos{
+        margin-bottom: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height:300px;
+        height: 30vw;
+    }
+
+    .img2p-one{
+        background-position: 50% 50%;
+        width: 100%;
+        margin-right: 5px;
+        background-image: url("../assets/food-one.jpg");
+        background-size: cover;
+    }
+
+    .img2p-two{
+        background-position: 50% 50%;
+        width: 100%;
+        background-image: url("../assets/food-two.jpg");
+        background-size: cover;
+    }
+
 </style>
