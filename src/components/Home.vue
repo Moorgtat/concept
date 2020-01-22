@@ -2,16 +2,16 @@
     <div id="Home">
 
 <!--        NAVBAR-->
-        <div id="nav" :class="{ black : navbarStatus }">
+        <div id="nav" :class="{ white : navbarStatus }">
             <div class="logo">
                 <a href="/"><logo></logo></a>
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="/">Menu</a></li>
-                    <li><a href="/">Livraison</a></li>
-                    <li><a href="/">Nous trouver</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus}" href="/">Accueil</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Menu</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Livraison</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Nous trouver</a></li>
                 </ul>
             </div>
         </div>
@@ -35,17 +35,24 @@
         <div id="presentation">
 
             <div class="presentation-anim" :class="{ opacitos : animStatus }">
+            <div class="texte-explication">
                 <font-awesome-icon icon="coffee" size="2x"/>
                 <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"  v-if="animStatus === true" />
             </div>
+            </div>
 
             <div id="texte-presentation">
-                <h1>JAMES BUN C’EST VOTRE CANTINE</h1>
-                <h1>STREET FOOD FRANCO-VIETNAMIENNE</h1>
+               <div class="texte-explication">
+                   <h2>JAMES BUN C’EST VOTRE CANTINE</h2>
+                   <h2>STREET FOOD FRANCO-VIETNAMIENNE</h2>
+                   <h2>JAMES BUN C’EST VOTRE CANTINE</h2>
+               </div>
             </div>
 
             <div class="presentation-anim" :class="{ opacitos : animStatus }">
+                <div class="texte-explication">
                 <font-awesome-icon icon="coffee"  size="2x"/>
+            </div>
             </div>
         </div>
 
@@ -135,8 +142,7 @@ export default {
       return {
           navbarStatus: '',
           animStatus: '',
-          animFooterStatus:'',
-          hauteur: ''
+          animFooterStatus:''
       }
   },
     methods: {
@@ -148,9 +154,6 @@ export default {
                 document.getElementById('bandeau-trois-photos').offsetHeight +
                 document.getElementById('bandeau-deux-photos').offsetHeight  +
                 document.getElementById('explication').offsetHeight);
-        },
-        hauteurTest () {
-            return  this.hauteur = document.getElementById('carousel').offsetHeight;
         }
     },
     created () {
@@ -177,19 +180,15 @@ export default {
         left: 0;
         width: 100%;
         height: 80px;
-        padding: 0 100px;
+        padding: 0 120px;
         box-sizing: border-box;
         transition: 1s;
         z-index: 1;
     }
-    .black{
-        background: black;
-    }
+
     #nav .logo {
         margin: 20px 40px;
         float: left;
-        font-size: 15px;
-        color: white;
     }
 
     #nav ul {
@@ -203,16 +202,39 @@ export default {
         list-style: none;
     }
 
-    #nav ul li a  {
-        font-size: 12px;
+    /*#nav ul li a  {*/
+    /*    color: white;*/
+    /*    font-size: 12px;*/
+    /*    line-height: 80px;*/
+    /*    padding: 5px 20px;*/
+    /*    text-decoration: none;*/
+    /*    text-transform: uppercase;*/
+    /*    transition: .5s;*/
+    /*}*/
+
+    .white-nav-li-a {
+        color: white;
+        font-size: 13px;
         line-height: 80px;
-        color:white;
         padding: 5px 20px;
         text-decoration: none;
         text-transform: uppercase;
         transition: .5s;
     }
 
+    .black-nav-li-a {
+        color: black;
+        font-size: 14px;
+        line-height: 80px;
+        padding: 5px 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: .5s;
+    }
+
+    .white{
+        background: white;
+    }
 
     /*CAROUSEL*/
     #carousel {
@@ -243,15 +265,16 @@ export default {
     }
 
     #texte-presentation {
-        border: 1px solid black;
+        display: flex;
         width: 100%;
-        height: 250px;
+        height: 210px;
     }
 
     .presentation-anim{
+        display: flex;
         margin: 5px;
         width: 100%;
-        height: 40px;
+        height: 60px;
     }
 
     .opacitos {
