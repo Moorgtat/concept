@@ -10,7 +10,7 @@
                 <ul>
                     <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus}" href="/">Accueil</a></li>
                     <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Menu</a></li>
-                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Livraison</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">L'équipe</a></li>
                     <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Nous trouver</a></li>
                 </ul>
             </div>
@@ -35,55 +35,63 @@
         <div id="presentation">
 
             <div class="presentation-anim" :class="{ opacitos : animStatus }">
-            <div class="texte-explication">
+            <div class="marge-auto">
                 <font-awesome-icon icon="coffee" size="2x"/>
                 <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"  v-if="animStatus === true" />
             </div>
             </div>
 
             <div id="texte-presentation">
-               <div class="texte-explication">
-                   <h2>JAMES BUN C’EST VOTRE CANTINE</h2>
-                   <h2>STREET FOOD FRANCO-VIETNAMIENNE</h2>
-                   <h2>JAMES BUN C’EST VOTRE CANTINE</h2>
+               <div class="marge-auto">
+                  <strong>
+                      <p>LE SITE DE VOTRE RESTAURANT C'EST</p>
+                      <p>NOTRE METIER DE VOUS EN RENDRE FIER</p>
+                  </strong>
                </div>
             </div>
 
             <div class="presentation-anim" :class="{ opacitos : animStatus }">
-                <div class="texte-explication">
-                <font-awesome-icon icon="coffee"  size="2x"/>
-            </div>
+                <div class="marge-auto">
+                  <font-awesome-icon icon="coffee"  size="2x"/>
+                </div>
             </div>
         </div>
 
 <!--        BANDEAUX-->
 <div id="bandeau-container">
 
-        <div class="bandeau-trois-photos">
-            <div class="img3p-one">
+    <div class="bandeau-3p">
+        <div class="parent mr4">
+            <div class="img3p bg-one">
                 <p><a href=""> Notre restaurant </a></p>
             </div>
-            <div class="img3p-two">
-              <p><a href=""> Nos menus </a></p>
-            </div>
-            <div class="img3p-three">
-              <p><a href=""> Nous trouver </a></p>
+        </div>
+        <div class="parent mr4">
+            <div class="img3p bg-two">
+                <p><a href=""> Nos menus </a></p>
             </div>
         </div>
+        <div class="parent">
+            <div class="img3p bg-three">
+                <p><a href=""> Nous trouver </a></p>
+            </div>
+        </div>
+    </div>
 
         <div class="bandeau-deux-photos">
             <div class="img2p-one">
             </div>
             <div class="img2p-two">
-                <div class="texte-b2p"><h2>JAMES BUN C’EST VOTRE CANTINE
-                    STREET FOOD FRANCO-VIETNAMIENNE</h2></div>
+                <div class="marge-auto">
+                    <h2>LE SITE VOTRE RESTAURANT C’EST NOTRE
+                    METIER DE VOUS EN RENDRE FIER</h2></div>
             </div>
         </div>
 
     <div class="bandeau-deux-photos">
         <div class="b2p-texte">
-            <h2>JAMES BUN C’EST VOTRE CANTINE
-                STREET FOOD FRANCO-VIETNAMIENNE</h2>
+            <h2>LE SITE VOTRE RESTAURANT C’EST NOTRE
+                METIER DE VOUS EN RENDRE FIER</h2>
         </div>
         <div class="img2p-two">
         </div>
@@ -93,12 +101,11 @@
 
 <!--        EXPLICATION-->
         <div id="explication">
-           <div class="texte-explication"> <p>JAMES BUN C’EST VOTRE CANTINE
-               STREET FOOD FRANCO-VIETNAMIENNE</p>
-               <p>JAMES BUN C’EST VOTRE CANTINE
-                   STREET FOOD FRANCO-VIETNAMIENNE</p>
-               <p>JAMES BUN C’EST VOTRE CANTINE
-                   STREET FOOD FRANCO-VIETNAMIENNE</p>
+           <div class="marge-auto">
+               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
+               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
+               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
+               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
            </div>
         </div>
 
@@ -202,16 +209,6 @@ export default {
         list-style: none;
     }
 
-    /*#nav ul li a  {*/
-    /*    color: white;*/
-    /*    font-size: 12px;*/
-    /*    line-height: 80px;*/
-    /*    padding: 5px 20px;*/
-    /*    text-decoration: none;*/
-    /*    text-transform: uppercase;*/
-    /*    transition: .5s;*/
-    /*}*/
-
     .white-nav-li-a {
         color: white;
         font-size: 13px;
@@ -244,7 +241,7 @@ export default {
         width: 100%;
         height: 100vh;
         min-height: 250px;
-        background-position: 50% 50%;
+        background-position: 50% 40%;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -267,6 +264,7 @@ export default {
     #texte-presentation {
         display: flex;
         width: 100%;
+        font-size: 40px;
         height: 210px;
     }
 
@@ -289,44 +287,58 @@ export default {
 
     /*BANDEAU 3P*/
 
-    .bandeau-trois-photos{
+    .bandeau-3p{
         margin-bottom: 5px;
-        width: 100%;
         display: flex;
         flex-direction: row;
-        min-height:200px;
-        height: 20vw;
-        font-size: 2vw;
-        color: white;
-        line-height: 15vw;
+        height: calc(200px + 5vw);
+        line-height: calc(200px + 3.4vw);
     }
 
-    .img3p-one{
-        background-position: 50% 50%;
+    .bandeau-3p a {
+        text-decoration: none;
+        color: white;
+        font-size:calc(12px + 1.3vw);
+    }
+
+    .parent{
         width: 100%;
-        margin-right: 5px;
+        overflow: hidden;
+    }
+
+    .mr4{
+        margin-right: 4px;
+    }
+
+    .img3p{
+        height: 100%;
+        border-top: 1px solid transparent;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: ease-in-out 0.3s;
+    }
+
+    .bg-one {
         background-image: url("../assets/food-one.jpg");
-        background-size: cover;
     }
 
-    .bandeau-trois-photos a {
-        color: white;
-    }
-
-    .img3p-two{
-        background-position: 50% 50%;
-        width: 100%;
-        margin-right: 5px;
+    .bg-two {
         background-image: url("../assets/food-two.jpg");
-        background-size: cover;
     }
 
-    .img3p-three{
-        background-position: 50% 50%;
-        width: 100%;
+    .bg-three {
         background-image: url("../assets/food-three.jpg");
-        background-size: cover;
     }
+
+    .parent:hover .img3p, .parent:focus .img3p {
+        transform: scale(1.02);
+    }
+
+    .parent:hover a, .parent:focus a {
+        text-decoration: underline;
+    }
+
 
     /*BANDEAU 2P*/
 
@@ -362,19 +374,14 @@ export default {
         background-size: cover;
     }
 
-    .texte-b2p{
-        margin: auto;
-    }
-
     /*EXPLICATION*/
 
 #explication {
     display: flex;
     height: 300px;
-    border: solid 2px Black;
 }
 
-.texte-explication{
+.marge-auto{
     margin: auto;
 }
 
@@ -382,7 +389,6 @@ export default {
 
     #caroussel-avis {
         height: 300px;
-        border: solid 2px Black;
     }
 
     /*FOOTER*/
