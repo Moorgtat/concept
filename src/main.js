@@ -3,10 +3,11 @@ import App from './App.vue'
 import {router} from './router'
 import VueRouter from 'vue-router'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import {faCoffee} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {faCoffee} from '@fortawesome/free-solid-svg-icons'
+import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faCoffee)
+library.add(faCoffee, faFacebook)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueRouter)

@@ -1,5 +1,7 @@
 <template>
     <div id="Home">
+
+<!--        NAVBAR-->
         <div id="nav" :class="{ black : navbarStatus }">
             <div class="logo">
                 <a href="/"><logo></logo></a>
@@ -7,12 +9,14 @@
             <div class="menu">
                 <ul>
                     <li><a href="/">Accueil</a></li>
-                    <li><a href="/menu">Menu</a></li>
-                    <li><a href="/contact">Nous trouver</a></li>
+                    <li><a href="/">Menu</a></li>
+                    <li><a href="/">Livraison</a></li>
+                    <li><a href="/">Nous trouver</a></li>
                 </ul>
             </div>
         </div>
 
+<!--        CAROUSEL-->
         <div id="carousel">
             <Carousel>
                 <Carousel-slide>
@@ -27,67 +31,90 @@
             </Carousel>
         </div>
 
+<!--        PRESENTATION-->
         <div id="presentation">
-            <div id="presentation-haut" :class="{ opacitos : animStatus }">
-                <font-awesome-icon icon="coffee"  size="2x"/>
-                <button @click="hauteurTest">Rafraichir la Hauteur</button>
-                <p> {{ hauteur }} </p>
+
+            <div class="presentation-anim" :class="{ opacitos : animStatus }">
+                <font-awesome-icon icon="coffee" size="2x"/>
+                <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"  v-if="animStatus === true" />
             </div>
+
             <div id="texte-presentation">
-                <p>Texte</p>
+                <h1>JAMES BUN C’EST VOTRE CANTINE</h1>
+                <h1>STREET FOOD FRANCO-VIETNAMIENNE</h1>
             </div>
-            <div>
-                <font-awesome-icon icon="coffee"  size="2x"/>
-                <font-awesome-icon icon="coffee"  size="2x"/>
-                <font-awesome-icon icon="coffee"  size="2x"/>
-                <font-awesome-icon icon="coffee"  size="2x"/>
+
+            <div class="presentation-anim" :class="{ opacitos : animStatus }">
                 <font-awesome-icon icon="coffee"  size="2x"/>
             </div>
         </div>
-<div id="test">
+
+<!--        BANDEAUX-->
+<div id="bandeau-container">
+
         <div class="bandeau-trois-photos">
             <div class="img3p-one">
-              <p> Test </p>
+                <p><a href=""> Notre restaurant </a></p>
             </div>
             <div class="img3p-two">
-              <p> Test </p>
+              <p><a href=""> Nos menus </a></p>
             </div>
             <div class="img3p-three">
-              <p> Test </p>
+              <p><a href=""> Nous trouver </a></p>
             </div>
         </div>
 
         <div class="bandeau-deux-photos">
             <div class="img2p-one">
-                <p> Test </p>
             </div>
             <div class="img2p-two">
-                <p> Test </p>
+                <div class="texte-b2p"><h2>JAMES BUN C’EST VOTRE CANTINE
+                    STREET FOOD FRANCO-VIETNAMIENNE</h2></div>
             </div>
         </div>
 
     <div class="bandeau-deux-photos">
-        <div class="img2p-one">
-            <p> Test </p>
+        <div class="b2p-texte">
+            <h2>JAMES BUN C’EST VOTRE CANTINE
+                STREET FOOD FRANCO-VIETNAMIENNE</h2>
         </div>
         <div class="img2p-two">
-            <p> Test </p>
         </div>
     </div>
 
 </div>
 
+<!--        EXPLICATION-->
         <div id="explication">
-            <h1>Texte</h1>
+           <div class="texte-explication"> <p>JAMES BUN C’EST VOTRE CANTINE
+               STREET FOOD FRANCO-VIETNAMIENNE</p>
+               <p>JAMES BUN C’EST VOTRE CANTINE
+                   STREET FOOD FRANCO-VIETNAMIENNE</p>
+               <p>JAMES BUN C’EST VOTRE CANTINE
+                   STREET FOOD FRANCO-VIETNAMIENNE</p>
+           </div>
+        </div>
+
           <div id="caroussel-avis">
               <h1>Carroussel Avis</h1>
           </div>
+
+
+<!--        FOOTER-->
+        <div id="footer" :class="{ opacitos : animFooterStatus }">
+            <div id="contacts">
+               Contacts
+            </div>
+            <div id="livraison">
+                Livraison
+            </div>
+            <div id="divers">
+                Divers
+            </div>
         </div>
 
-        <div id="footer" :class="{ opacitos : animFooterStatus }">
-            <h1>Footer</h1>
-            <h1>Adresse</h1>
-            <h1>Divers</h1>
+        <div id="surplus">
+
         </div>
 
     </div>
@@ -138,6 +165,11 @@ export default {
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
+    #Home {
+        font-family: 'Roboto Condensed', sans-serif;
+        text-align: center;
+    }
+
     /*NAVBAR*/
     #nav {
         position: fixed;
@@ -172,7 +204,6 @@ export default {
     }
 
     #nav ul li a  {
-        font-family: 'Roboto Condensed', sans-serif;
         font-size: 12px;
         line-height: 80px;
         color:white;
@@ -207,17 +238,20 @@ export default {
 
     /*PRESENTATION*/
     #presentation {
-        border: 1px solid black;
         width: 100%;
-        height: 200px;
         text-align: center;
     }
 
     #texte-presentation {
         border: 1px solid black;
         width: 100%;
-        height: 40px;
+        height: 250px;
+    }
 
+    .presentation-anim{
+        margin: 5px;
+        width: 100%;
+        height: 40px;
     }
 
     .opacitos {
@@ -226,19 +260,22 @@ export default {
     }
 
 
-    #test{
+    #bandeau-container{
         margin: 5px;
     }
 
     /*BANDEAU 3P*/
 
     .bandeau-trois-photos{
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         width: 100%;
         display: flex;
         flex-direction: row;
         min-height:200px;
         height: 20vw;
+        font-size: 2vw;
+        color: white;
+        line-height: 15vw;
     }
 
     .img3p-one{
@@ -247,6 +284,10 @@ export default {
         margin-right: 5px;
         background-image: url("../assets/food-one.jpg");
         background-size: cover;
+    }
+
+    .bandeau-trois-photos a {
+        color: white;
     }
 
     .img3p-two{
@@ -267,12 +308,19 @@ export default {
     /*BANDEAU 2P*/
 
     .bandeau-deux-photos{
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         width: 100%;
         display: flex;
         flex-direction: row;
         min-height:300px;
-        height: 30vw;
+        height: 28vw;
+    }
+
+    .b2p-texte{
+        background-position: 50% 50%;
+        width: 100%;
+        margin: auto;
+        padding-right: 5px;
     }
 
     .img2p-one{
@@ -284,10 +332,60 @@ export default {
     }
 
     .img2p-two{
+        display: flex;
         background-position: 50% 50%;
         width: 100%;
         background-image: url("../assets/food-two.jpg");
         background-size: cover;
     }
 
+    .texte-b2p{
+        margin: auto;
+    }
+
+    /*EXPLICATION*/
+
+#explication {
+    display: flex;
+    height: 300px;
+    border: solid 2px Black;
+}
+
+.texte-explication{
+    margin: auto;
+}
+
+    /*CAROUSEL AVIS*/
+
+    #caroussel-avis {
+        height: 300px;
+        border: solid 2px Black;
+    }
+
+    /*FOOTER*/
+    #footer{
+        background-color: #12171b;
+        height: 340px;
+        display: flex;
+        flex-direction: row;
+        padding: 60px 120px;
+        color: white;
+    }
+    #contacts {
+        width: 100%;
+    }
+    #livraison {
+        border-right: dashed 1px rgba(191, 191, 191, .3);
+        border-left: dashed 1px rgba(191, 191, 191, .3);
+        width: 100%;
+        height: 100%;
+    }
+    #divers {
+        width: 100%;
+    }
+
+    #surplus {
+        height: 100px;
+        background-color: black;
+    }
 </style>
