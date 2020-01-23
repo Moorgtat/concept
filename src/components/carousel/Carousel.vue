@@ -19,9 +19,16 @@
             this.slides = this.$children;
             this.slides.forEach((slide, i) => {
                 slide.index = i
-            })
+            });
+            // this.start();
         },
         methods: {
+            // start() {
+            //     setTimeout(() => {
+            //         this.next();
+            //         this.start();
+            //     }, 7000)
+            // },
             next() {
                 this.index++;
                 this.direction = 'right';

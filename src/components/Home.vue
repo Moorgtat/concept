@@ -16,8 +16,16 @@
             </div>
         </div>
 
+<!--        ANIM CAROUSEL <a> -->
+        <div id="ACA">
+            <div id="bigtest" class="liencar run-animation">
+                <p style="margin-bottom: 25px"><a href=""><b> NOS RESTAURANTS </b></a> </p>
+                <p><a href=""><b> ME FAIRE LIVRER </b></a></p>
+            </div>
+        </div>
+
 <!--        CAROUSEL-->
-        <div id="carousel">
+        <div id="carousel" @click.prevent="dosomething">
             <Carousel>
                 <Carousel-slide>
                     <div class="img-carousel img-one"></div>
@@ -34,25 +42,28 @@
 <!--        PRESENTATION-->
         <div id="presentation">
 
-            <div class="presentation-anim" :class="{ opacitos : animStatus }">
+            <div class="presentation-anim" :class="{ 'run-animation' : animStatus }">
             <div class="marge-auto">
-                <font-awesome-icon icon="coffee" size="2x"/>
-                <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"  v-if="animStatus === true" />
+               <div>
+                   <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
+                   <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
+                   <font-awesome-icon icon="star" size="2x"/>
+               </div>
             </div>
             </div>
 
             <div id="texte-presentation">
                <div class="marge-auto">
-                  <strong>
-                      <p>LE SITE DE VOTRE RESTAURANT C'EST</p>
-                      <p>NOTRE METIER DE VOUS EN RENDRE FIER</p>
-                  </strong>
+                   <p><strong>LE SITE DE VOTRE RESTAURANT C'EST</strong></p>
+                   <p><strong>NOTRE METIER DE VOUS EN RENDRE FIER</strong></p>
                </div>
             </div>
 
-            <div class="presentation-anim" :class="{ opacitos : animStatus }">
+            <div class="presentation-anim" :class="{ 'run-animation' : animStatus }">
                 <div class="marge-auto">
-                  <font-awesome-icon icon="coffee"  size="2x"/>
+                    <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
+                    <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
+                    <font-awesome-icon icon="star" size="2x"/>
                 </div>
             </div>
         </div>
@@ -115,7 +126,7 @@
 
 
 <!--        FOOTER-->
-        <div id="footer" :class="{ opacitos : animFooterStatus }">
+        <div id="footer">
             <div id="contacts">
                Contacts
             </div>
@@ -148,20 +159,25 @@ export default {
     data () {
       return {
           navbarStatus: '',
-          animStatus: '',
-          animFooterStatus:''
+          animStatus: ''
       }
   },
     methods: {
         handleScroll () {
             this.navbarStatus = !!(window.scrollY << 18);
             this.animStatus = !!(window.scrollY <<  document.getElementById('carousel').offsetHeight);
-            this.animFooterStatus = !!(window.scrollY <<  document.getElementById('carousel').offsetHeight +
-                document.getElementById('presentation').offsetHeight +
-                document.getElementById('bandeau-trois-photos').offsetHeight +
-                document.getElementById('bandeau-deux-photos').offsetHeight  +
-                document.getElementById('explication').offsetHeight);
+        },
+        dosomething () {
+            let element =  document.getElementById('bigtest');
+            element.classList.remove("run-animation");
+            // oblige le browser a reflow
+            // void element.offsetWidth;
+            // element.classList.add("run-animation");
+            setTimeout(() => element.classList.add("run-animation"), 0);
         }
+    },
+    mounted() {
+        // this.startAnim();
     },
     created () {
         window.addEventListener('scroll', this.handleScroll);
@@ -180,6 +196,38 @@ export default {
         text-align: center;
     }
 
+    /*ANIM ACCUEIL <a>*/
+    #ACA{
+        background: transparent;
+        position: absolute;
+        top:80px;
+        left: 10%;
+        width: 80%;
+        height: 90vh;
+        min-height: 250px;
+        z-index: 1;
+    }
+
+    .liencar{
+        position: relative;
+        top:32%;
+    }
+
+    .liencar a{
+        color: white;
+        font-size: 42px;
+    }
+
+    .run-animation {
+        animation: comeFB ease-in-out 1.3s;
+    }
+
+    @keyframes comeFB {
+        from { top: 18%; opacity: 0; }
+        to { top: 32%; opacity: 1; }
+        
+    }
+    
     /*NAVBAR*/
     #nav {
         position: fixed;
@@ -190,7 +238,7 @@ export default {
         padding: 0 120px;
         box-sizing: border-box;
         transition: 1s;
-        z-index: 1;
+        z-index: 2;
     }
 
     #nav .logo {
@@ -272,14 +320,8 @@ export default {
         display: flex;
         margin: 5px;
         width: 100%;
-        height: 60px;
+        height: 80px;
     }
-
-    .opacitos {
-        transition: 0.5s;
-        opacity: 0.5;
-    }
-
 
     #bandeau-container{
         margin: 5px;
@@ -386,10 +428,10 @@ export default {
 }
 
     /*CAROUSEL AVIS*/
-
     #caroussel-avis {
         height: 300px;
     }
+
 
     /*FOOTER*/
     #footer{
