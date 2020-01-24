@@ -8,8 +8,13 @@ export const router = new Router({
     routes: [
         {
             path: '/',
-            name: 'Home',
-            component: () => import('./components/Home')
+            name: 'Concept',
+            component: () => import('./components/Concept')
+        },
+        {
+            path: '/concept',
+            name: 'Concept',
+            component: () => import('./components/Concept')
         },
         {
             path: '/menu',
@@ -22,4 +27,13 @@ export const router = new Router({
             component: () => import('./components/Contact')
         }
     ]
+});
+
+router.beforeEach((to, from, next) => {
+    const publicPages = ['/', '/concept', '/menu', '/contact'];
+    const authRequired = !publicPages.includes(to.path);
+    if (authRequired) {
+        return next('/concept')
+    }
+    next()
 });

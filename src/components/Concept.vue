@@ -42,9 +42,9 @@
 <!--        PRESENTATION-->
         <div id="presentation">
 
-            <div class="presentation-anim" :class="{ 'run-animation' : animStatus }">
+            <div class="presentation-anim" :class="{ stAnim : animStatus }">
             <div class="marge-auto">
-               <div>
+               <div class="startline">
                    <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
                    <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
                    <font-awesome-icon icon="star" size="2x"/>
@@ -59,11 +59,13 @@
                </div>
             </div>
 
-            <div class="presentation-anim" :class="{ 'run-animation' : animStatus }">
+            <div class="presentation-anim" :class="{ stAnim : animStatus }">
                 <div class="marge-auto">
-                    <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
-                    <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
-                    <font-awesome-icon icon="star" size="2x"/>
+                    <div class="startline">
+                        <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
+                        <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
+                        <font-awesome-icon icon="star" size="2x"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,7 +152,7 @@
     import Carousel from "@/components/carousel/Carousel";
     import CarouselSlide from "@/components/carousel/CarouselSlide";
 export default {
-  name: 'Home',
+  name: 'Concept',
     components: {
       Carousel,
       CarouselSlide,
@@ -167,17 +169,11 @@ export default {
             this.navbarStatus = !!(window.scrollY << 18);
             this.animStatus = !!(window.scrollY <<  document.getElementById('carousel').offsetHeight);
         },
-        dosomething () {
-            let element =  document.getElementById('bigtest');
+        dosomething: function () {
+            let element = document.getElementById('bigtest');
             element.classList.remove("run-animation");
-            // oblige le browser a reflow
-            // void element.offsetWidth;
-            // element.classList.add("run-animation");
             setTimeout(() => element.classList.add("run-animation"), 0);
         }
-    },
-    mounted() {
-        // this.startAnim();
     },
     created () {
         window.addEventListener('scroll', this.handleScroll);
@@ -225,7 +221,6 @@ export default {
     @keyframes comeFB {
         from { top: 18%; opacity: 0; }
         to { top: 32%; opacity: 1; }
-        
     }
     
     /*NAVBAR*/
@@ -323,9 +318,54 @@ export default {
         height: 80px;
     }
 
+    .startline {
+        position: relative;
+        width: 120px;
+    }
+
+    .startline::before {
+        content:'';
+        display: block;
+        width: 180px;
+        height: 2px;
+        background: black;
+        position: absolute;
+        right: 110%;
+        top: 50%;
+        z-index: -2;
+    }
+
+    .startline::after {
+        content:'';
+        display: block;
+        width: 180px;
+        height: 2px;
+        background: black;
+        position: absolute;
+        left: 110%;
+        top: 50%;
+        z-index: -2;
+    }
+
+    .stAnim {
+        animation: startA ease-in-out 1.3s;
+    }
+
+    @keyframes startA {
+        from { transform: translateY(-30px);
+               opacity: 0;
+         }
+        to   { transform: translateY(0px);
+               opacity: 1;
+        }
+    }
+
+    /*BANDEAUX*/
+
     #bandeau-container{
         margin: 5px;
     }
+
 
     /*BANDEAU 3P*/
 
