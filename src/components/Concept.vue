@@ -28,13 +28,13 @@
         <div id="carousel" @click.prevent="dosomething">
             <Carousel>
                 <Carousel-slide>
-                    <div class="img-carousel img-one"></div>
+                    <div class="img-carousel bg-one"></div>
                 </Carousel-slide>
                 <Carousel-slide>
-                    <div class="img-carousel img-two"></div>
+                    <div class="img-carousel bg-two"></div>
                 </Carousel-slide>
                 <Carousel-slide>
-                    <div class="img-carousel img-three"></div>
+                    <div class="img-carousel bg-three"></div>
                 </Carousel-slide>
             </Carousel>
         </div>
@@ -45,9 +45,7 @@
             <div class="presentation-anim" :class="{ stAnim : animStatus }">
             <div class="marge-auto">
                <div class="startline">
-                   <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
-                   <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
-                   <font-awesome-icon icon="star" size="2x"/>
+                   <font-awesome-icon icon="star" size="lg"/>
                </div>
             </div>
             </div>
@@ -62,9 +60,7 @@
             <div class="presentation-anim" :class="{ stAnim : animStatus }">
                 <div class="marge-auto">
                     <div class="startline">
-                        <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
-                        <font-awesome-icon icon="star" size="2x" style="margin-right: 5px"/>
-                        <font-awesome-icon icon="star" size="2x"/>
+                        <font-awesome-icon icon="star" size="lg"/>
                     </div>
                 </div>
             </div>
@@ -73,6 +69,7 @@
 <!--        BANDEAUX-->
 <div id="bandeau-container">
 
+    <!--    BANDEAU TROIS PHOTOS-->
     <div class="bandeau-3p">
         <div class="parent mr4">
             <div class="img3p bg-one">
@@ -91,22 +88,27 @@
         </div>
     </div>
 
+     <!--    BANDEAU DEUX PHOTOS-->
         <div class="bandeau-deux-photos">
-            <div class="img2p-one">
+            <div class="img2p-one bg-one">
             </div>
-            <div class="img2p-two">
+            <div class="img2p-two bg-two-dark text-white">
                 <div class="marge-auto">
-                    <h2>LE SITE VOTRE RESTAURANT C’EST NOTRE
-                    METIER DE VOUS EN RENDRE FIER</h2></div>
+                    <p style="font-size: 20px; padding: 20px;">
+                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
+                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
+                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
+                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
+                    </p></div>
             </div>
         </div>
 
+    <!--    BANDEAU DEUX PHOTOS-->
     <div class="bandeau-deux-photos">
         <div class="b2p-texte">
-            <h2>LE SITE VOTRE RESTAURANT C’EST NOTRE
-                METIER DE VOUS EN RENDRE FIER</h2>
+            <p class="marge-auto pad25 ft32">Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
         </div>
-        <div class="img2p-two">
+        <div class="img2p-two bg-three">
         </div>
     </div>
 
@@ -114,16 +116,27 @@
 
 <!--        EXPLICATION-->
         <div id="explication">
-           <div class="marge-auto">
-               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
-               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
-               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
-               <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
-           </div>
+            <div class="biglogo">
+               <div class="marge-auto">
+                   <a href="/"><biglogo></biglogo></a>
+               </div>
+            </div>
+            <div class="expli-texte">
+                <div class="marge-auto">
+                    <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
+                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
+                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
+                    <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
+                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
+                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
+                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
+                </div>
+            </div>
         </div>
 
+<!--        CAROUSEL AVIS-->
           <div id="caroussel-avis">
-              <h1>Carroussel Avis</h1>
+              <p class="marge-auto">Carroussel Avis</p>
           </div>
 
 
@@ -149,6 +162,7 @@
 
 <script>
     import logo from "@/components/svg/logo";
+    import biglogo from "@/components/svg/biglogo";
     import Carousel from "@/components/carousel/Carousel";
     import CarouselSlide from "@/components/carousel/CarouselSlide";
 export default {
@@ -156,7 +170,8 @@ export default {
     components: {
       Carousel,
       CarouselSlide,
-      logo
+      logo,
+      biglogo
     },
     data () {
       return {
@@ -190,6 +205,40 @@ export default {
     #Home {
         font-family: 'Roboto Condensed', sans-serif;
         text-align: center;
+    }
+
+    /*BACKGROUND*/
+    .bg-one {
+        background-image: url("../assets/food-one.jpg");
+    }
+
+    .bg-two {
+        background-image: url("../assets/food-two.jpg");
+    }
+
+    .bg-three {
+        background-image: url("../assets/food-three.jpg");
+    }
+
+    .bg-two-dark {
+        background-image: url("../assets/food-two-dark.jpg");
+    }
+
+    /*CLASS STYLE*/
+    .marge-auto {
+        margin: auto;
+    }
+
+    .text-white {
+        color: white;
+    }
+
+    .pad25 {
+        padding: 25px;
+    }
+
+    .ft32 {
+        font-size: 32px;
     }
 
     /*ANIM ACCUEIL <a>*/
@@ -230,7 +279,7 @@ export default {
         left: 0;
         width: 100%;
         height: 80px;
-        padding: 0 120px;
+        padding: 0 calc(20px + 15vw);
         box-sizing: border-box;
         transition: 1s;
         z-index: 2;
@@ -288,15 +337,6 @@ export default {
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .img-carousel.img-one{
-        background-image: url("../assets/food-one.jpg");
-    }
-    .img-carousel.img-two{
-        background-image: url("../assets/food-two.jpg");
-    }
-    .img-carousel.img-three{
-        background-image: url("../assets/food-three.jpg");
-    }
 
     /*PRESENTATION*/
     #presentation {
@@ -320,7 +360,7 @@ export default {
 
     .startline {
         position: relative;
-        width: 120px;
+        width: 50px;
     }
 
     .startline::before {
@@ -401,18 +441,6 @@ export default {
         transition: ease-in-out 0.3s;
     }
 
-    .bg-one {
-        background-image: url("../assets/food-one.jpg");
-    }
-
-    .bg-two {
-        background-image: url("../assets/food-two.jpg");
-    }
-
-    .bg-three {
-        background-image: url("../assets/food-three.jpg");
-    }
-
     .parent:hover .img3p, .parent:focus .img3p {
         transform: scale(1.02);
     }
@@ -434,17 +462,16 @@ export default {
     }
 
     .b2p-texte{
+        display: flex;
         background-position: 50% 50%;
         width: 100%;
-        margin: auto;
-        padding-right: 5px;
+        margin-right: 5px;
     }
 
     .img2p-one{
         background-position: 50% 50%;
         width: 100%;
         margin-right: 5px;
-        background-image: url("../assets/food-one.jpg");
         background-size: cover;
     }
 
@@ -452,23 +479,31 @@ export default {
         display: flex;
         background-position: 50% 50%;
         width: 100%;
-        background-image: url("../assets/food-two.jpg");
         background-size: cover;
     }
 
     /*EXPLICATION*/
 
-#explication {
-    display: flex;
-    height: 300px;
-}
+    #explication {
+        display: flex;
+        flex-direction: column;
+        height: 450px;
+    }
 
-.marge-auto{
-    margin: auto;
-}
+    .biglogo{
+        display: flex;
+        height: 150px;
+        padding-top: 25px;
+    }
+
+    .expli-texte{
+        display: flex;
+        height: 300px;
+    }
 
     /*CAROUSEL AVIS*/
     #caroussel-avis {
+        display: flex;
         height: 300px;
     }
 
