@@ -25,7 +25,7 @@
         </div>
 
 <!--        CAROUSEL-->
-        <div id="carousel" @click.prevent="dosomething">
+        <div id="carousel" @click.prevent="resetAcaAnim">
             <Carousel>
                 <Carousel-slide>
                     <div class="img-carousel bg-one"></div>
@@ -42,10 +42,10 @@
 <!--        PRESENTATION-->
         <div id="presentation">
 
-            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animStatus }">
+            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animPresentationStatus }">
             <div class="marge-auto">
                <div class="startline">
-                   <font-awesome-icon icon="star" size="m"/>
+                   <font-awesome-icon icon="star"/>
                </div>
             </div>
             </div>
@@ -57,10 +57,10 @@
                </div>
             </div>
 
-            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animStatus }">
+            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animPresentationStatus }">
                 <div class="marge-auto">
                     <div class="startline">
-                        <font-awesome-icon icon="star" size="m"/>
+                        <font-awesome-icon icon="star"/>
                     </div>
                 </div>
             </div>
@@ -214,7 +214,7 @@ export default {
     data () {
       return {
           navbarStatus: '',
-          animStatus: '',
+          animPresentationStatus: '',
           animBandeauStatus:'',
           animExplicationStatus:''
       }
@@ -222,13 +222,8 @@ export default {
     methods: {
         handleScroll () {
             this.navbarStatus = !!(window.scrollY << 18);
-            this.animStatus = !!(window.scrollY <<  document.getElementById('carousel').offsetHeight);
-            this.animBandeauStatus = !!(window.scrollY <<  (document.getElementById('carousel').offsetHeight + document.getElementById('presentation').offsetHeight));
-            this.animExplicationStatus = !!(window.scrollY <<  (document.getElementById('carousel').offsetHeight
-                + document.getElementById('presentation').offsetHeight
-                + document.getElementById('bandeau-container').offsetHeight));
         },
-        dosomething: function () {
+        resetAcaAnim: function () {
             let element = document.getElementById('bigtest');
             element.classList.remove("run-animation");
             setTimeout(() => element.classList.add("run-animation"), 0);
@@ -236,6 +231,30 @@ export default {
     },
     created () {
         window.addEventListener('scroll', this.handleScroll);
+    },
+    mounted (){
+        let observer = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    this.animPresentationStatus = true;
+                    observer.unobserve(presentationAnim);
+                }
+            });
+        });
+
+        let observer2 = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    this.animExplicationStatus =true;
+                    observer.unobserve(animExplication);
+                }
+            });
+        });
+
+        const presentationAnim = document.querySelector('.presentation-anim');
+        const animExplication = document.getElementById('explication');
+        observer.observe(presentationAnim);
+        observer2.observe(animExplication);
     },
     destroyed () {
         window.removeEventListener('scroll', this.handleScroll);
@@ -596,7 +615,7 @@ export default {
     /*ANIMATION*/
 
     .run-slide30FromTop {
-        animation: slide30FromTop ease-in-out 1.3s;
+        animation: slide30FromTop ease-in-out 1.2s;
     }
 
     @keyframes slide30FromTop {
@@ -609,15 +628,11 @@ export default {
     }
 
     .run-slide30FromBottom {
-        animation: slide30FromBottom ease-out 1s;
+        animation: slide30FromBottom ease-out 1.2s;
     }
 
     @keyframes slide30FromBottom {
-        from { transform: translateY(160px);
-            opacity: 0;
-        }
-        to   { transform: translateY(0px);
-            opacity: 1;
-        }
+       from    {transform: translateY(160px); opacity: 0;}
+       to  { transform: translateY(0px); opacity: 1;}
     }
 </style>
