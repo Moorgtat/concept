@@ -42,10 +42,10 @@
 <!--        PRESENTATION-->
         <div id="presentation">
 
-            <div class="presentation-anim" :class="{ stAnim : animStatus }">
+            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animStatus }">
             <div class="marge-auto">
                <div class="startline">
-                   <font-awesome-icon icon="star" size="lg"/>
+                   <font-awesome-icon icon="star" size="m"/>
                </div>
             </div>
             </div>
@@ -57,20 +57,20 @@
                </div>
             </div>
 
-            <div class="presentation-anim" :class="{ stAnim : animStatus }">
+            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animStatus }">
                 <div class="marge-auto">
                     <div class="startline">
-                        <font-awesome-icon icon="star" size="lg"/>
+                        <font-awesome-icon icon="star" size="m"/>
                     </div>
                 </div>
             </div>
         </div>
 
-<!--        BANDEAUX-->
+    <!--    BANDEAUX-->
 <div id="bandeau-container">
 
     <!--    BANDEAU TROIS PHOTOS-->
-    <div class="bandeau-3p">
+    <div class="bandeau-3p" :class="{'run-slide30FromBottom' : animBandeauStatus}">
         <div class="parent mr4">
             <div class="img3p bg-one">
                 <p><a href=""> Notre restaurant </a></p>
@@ -98,7 +98,6 @@
                         Le site de votre restaurant, comme vous ne l'avez jamais vu.
                         Le site de votre restaurant, comme vous ne l'avez jamais vu.
                         Le site de votre restaurant, comme vous ne l'avez jamais vu.
-                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
                     </p></div>
             </div>
         </div>
@@ -111,25 +110,42 @@
         <div class="img2p-two bg-three">
         </div>
     </div>
-
 </div>
 
 <!--        EXPLICATION-->
-        <div id="explication">
+        <div id="explication" :class="{'run-slide30FromBottom' : animExplicationStatus}">
             <div class="biglogo">
                <div class="marge-auto">
                    <a href="/"><biglogo></biglogo></a>
                </div>
             </div>
-            <div class="expli-texte">
-                <div class="marge-auto">
-                    <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
-                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
-                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
-                    <p>VOTRE RESTAURANT MERITE UN SITE DYNAMIQUE ET MODERNE</p>
-                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
-                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
-                    <p>Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
+            <div class="expli-texte marge-auto">
+                <div style="text-align: center">
+                    <h2>
+                    Un concept de site pour votre restaurant !
+                    </h2>
+                    <p>
+                    Le numero, l'adresse ainsi que la ville de mon restaurant!
+                    </p>
+                    <p>
+                    Les horaires que je pratique.
+                    </p>
+                    <p>
+                    Au menu votre cuisine, vos saveurs, votre univers!
+                    Sur place, à emporter ou livré !
+                    </p>
+
+                    <div class="presentation-anim">
+                        <div class="marge-auto">
+                            <div class="startline">
+                                <font-awesome-icon icon="star" size="m"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1>
+                    ILS PARLENT DE NOUS !
+                    </h1>
                 </div>
             </div>
         </div>
@@ -143,18 +159,40 @@
 <!--        FOOTER-->
         <div id="footer">
             <div id="contacts">
-               Contacts
+            <h2>  NOTRE RESTAURANT </h2>
+                 <p>
+                Notre Adresse
+                 </p>
+                <p>
+                 Contactez-nous par mail!
+                </p>
+                <p>
+                 ENVIE DE NOUS REJOINDRE ?
+                 C'EST ICI : manager@concept-one.fr
+                </p>
             </div>
             <div id="livraison">
-                Livraison
+                <h2>Livraison</h2>
+               <p>LES SAVEURS DE NOTRE RESTAURANT</p>
+                <button>Custom</button>
+                <p>DIRECTEMENT CHEZ VOUS</p>
             </div>
             <div id="divers">
-                Divers
+                <h2>Restons en contact !</h2>
+                <p>
+                    On vous envoie les offres du moment, des recettes et des nouvelles de l’équipe
+                </p>
+                <h2>Newsletter</h2>
+                <input/>
+                <input/>
+                <button>Envoyer</button>
             </div>
         </div>
 
-        <div id="surplus">
-
+        <div class="surplus">
+<div class="surplus-content">
+   <a href="#carousel"><button class="btn-footer">Haut</button></a>
+</div>
         </div>
 
     </div>
@@ -176,13 +214,19 @@ export default {
     data () {
       return {
           navbarStatus: '',
-          animStatus: ''
+          animStatus: '',
+          animBandeauStatus:'',
+          animExplicationStatus:''
       }
   },
     methods: {
         handleScroll () {
             this.navbarStatus = !!(window.scrollY << 18);
             this.animStatus = !!(window.scrollY <<  document.getElementById('carousel').offsetHeight);
+            this.animBandeauStatus = !!(window.scrollY <<  (document.getElementById('carousel').offsetHeight + document.getElementById('presentation').offsetHeight));
+            this.animExplicationStatus = !!(window.scrollY <<  (document.getElementById('carousel').offsetHeight
+                + document.getElementById('presentation').offsetHeight
+                + document.getElementById('bandeau-container').offsetHeight));
         },
         dosomething: function () {
             let element = document.getElementById('bigtest');
@@ -387,19 +431,6 @@ export default {
         z-index: -2;
     }
 
-    .stAnim {
-        animation: startA ease-in-out 1.3s;
-    }
-
-    @keyframes startA {
-        from { transform: translateY(-30px);
-               opacity: 0;
-         }
-        to   { transform: translateY(0px);
-               opacity: 1;
-        }
-    }
-
     /*BANDEAUX*/
 
     #bandeau-container{
@@ -519,8 +550,10 @@ export default {
     }
     #contacts {
         width: 100%;
+        padding: 20px;
     }
     #livraison {
+        padding: 20px;
         border-right: dashed 1px rgba(191, 191, 191, .3);
         border-left: dashed 1px rgba(191, 191, 191, .3);
         width: 100%;
@@ -528,10 +561,63 @@ export default {
     }
     #divers {
         width: 100%;
+        padding: 20px;
     }
 
-    #surplus {
+    .surplus {
         height: 100px;
         background-color: black;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .surplus-content{
+        padding: 30px;
+    }
+    .btn-footer{
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        background-color: #12171b;
+        height: 45px;
+        width: 45px;
+        border-radius: 5px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        opacity: 0.4;
+    }
+
+    .btn-footer:hover {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+
+    /*ANIMATION*/
+
+    .run-slide30FromTop {
+        animation: slide30FromTop ease-in-out 1.3s;
+    }
+
+    @keyframes slide30FromTop {
+        from { transform: translateY(-30px);
+            opacity: 0;
+        }
+        to   { transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+
+    .run-slide30FromBottom {
+        animation: slide30FromBottom ease-out 1s;
+    }
+
+    @keyframes slide30FromBottom {
+        from { transform: translateY(160px);
+            opacity: 0;
+        }
+        to   { transform: translateY(0px);
+            opacity: 1;
+        }
     }
 </style>
