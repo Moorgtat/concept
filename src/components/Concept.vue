@@ -9,9 +9,9 @@
             <div class="menu">
                 <ul>
                     <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus}" href="/">Accueil</a></li>
-                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Menu</a></li>
-                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">L'équipe</a></li>
-                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/">Nous trouver</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/menu">Menu</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/lequipe">L'équipe</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/contact">Nous trouver</a></li>
                 </ul>
             </div>
         </div>
@@ -70,7 +70,7 @@
 <div id="bandeau-container">
 
     <!--    BANDEAU TROIS PHOTOS-->
-    <div class="bandeau-3p" :class="{'run-slide30FromBottom' : animBandeauStatus}">
+    <div class="bandeau-3p tercio" :class="{'run-slide30FromBottom' : animTercioStatus}">
         <div class="parent mr4">
             <div class="img3p bg-one">
                 <p><a href=""> Notre restaurant </a></p>
@@ -89,7 +89,7 @@
     </div>
 
      <!--    BANDEAU DEUX PHOTOS-->
-        <div class="bandeau-deux-photos">
+        <div class="bandeau-deux-photos uno" :class="{'run-slide30FromBottom' : animUnoStatus}">
             <div class="img2p-one bg-one">
             </div>
             <div class="img2p-two bg-two-dark text-white">
@@ -103,7 +103,7 @@
         </div>
 
     <!--    BANDEAU DEUX PHOTOS-->
-    <div class="bandeau-deux-photos">
+    <div class="bandeau-deux-photos deuxio" :class="{'run-slide30FromBottom' : animDeuxioStatus}">
         <div class="b2p-texte">
             <p class="marge-auto pad25 ft32">Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
         </div>
@@ -173,9 +173,9 @@
             </div>
             <div id="livraison">
                 <h2>Livraison</h2>
-               <p>LES SAVEURS DE NOTRE RESTAURANT</p>
-                <button>Custom</button>
+                <p>LES SAVEURS DE NOTRE RESTAURANT</p>
                 <p>DIRECTEMENT CHEZ VOUS</p>
+                <button class="btn-newsletter">Me livrer</button>
             </div>
             <div id="divers">
                 <h2>Restons en contact !</h2>
@@ -183,9 +183,8 @@
                     On vous envoie les offres du moment, des recettes et des nouvelles de l’équipe
                 </p>
                 <h2>Newsletter</h2>
-                <input/>
-                <input/>
-                <button>Envoyer</button>
+                <div><input placeholder="Votre adresse mail"/></div>
+                <button class="btn-newsletter">Envoyer</button>
             </div>
         </div>
 
@@ -216,6 +215,9 @@ export default {
           navbarStatus: '',
           animPresentationStatus: '',
           animBandeauStatus:'',
+          animUnoStatus: '',
+          animDeuxioStatus:'',
+          animTercioStatus:'',
           animExplicationStatus:''
       }
   },
@@ -235,7 +237,7 @@ export default {
     mounted (){
         let observer = new IntersectionObserver( entries => {
             entries.forEach(entry => {
-                if (entry.intersectionRatio > 0) {
+                if (entry.isIntersecting) {
                     this.animPresentationStatus = true;
                     observer.unobserve(presentationAnim);
                 }
@@ -244,17 +246,50 @@ export default {
 
         let observer2 = new IntersectionObserver( entries => {
             entries.forEach(entry => {
-                if (entry.intersectionRatio > 0) {
+                if (entry.isIntersecting) {
                     this.animExplicationStatus =true;
                     observer.unobserve(animExplication);
                 }
             });
         });
 
+        let observer3 = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animUnoStatus = true;
+                    observer.unobserve(unoAnim);
+                }
+            });
+        });
+
+        let observer4 = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animDeuxioStatus =true;
+                    observer.unobserve(deuxioAnim);
+                }
+            });
+        });
+
+        let observer5 = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animTercioStatus =true;
+                    observer.unobserve(tercioAnim);
+                }
+            });
+        });
+
         const presentationAnim = document.querySelector('.presentation-anim');
         const animExplication = document.getElementById('explication');
+        const unoAnim = document.querySelector('.uno');
+        const deuxioAnim = document.querySelector('.deuxio');
+        const tercioAnim = document.querySelector('.tercio');
         observer.observe(presentationAnim);
         observer2.observe(animExplication);
+        observer3.observe(unoAnim);
+        observer4.observe(deuxioAnim);
+        observer5.observe(tercioAnim);
     },
     destroyed () {
         window.removeEventListener('scroll', this.handleScroll);
@@ -415,6 +450,7 @@ export default {
     }
 
     .presentation-anim{
+        opacity: 0;
         display: flex;
         margin: 5px;
         width: 100%;
@@ -459,6 +495,10 @@ export default {
 
     /*BANDEAU 3P*/
 
+    .tercio{
+        opacity: 0;
+    }
+
     .bandeau-3p{
         margin-bottom: 5px;
         display: flex;
@@ -502,6 +542,12 @@ export default {
 
     /*BANDEAU 2P*/
 
+    .uno{
+        opacity: 0;
+    }
+    .deuxio{
+        opacity: 0;
+    }
     .bandeau-deux-photos{
         margin-bottom: 5px;
         width: 100%;
@@ -535,6 +581,7 @@ export default {
     /*EXPLICATION*/
 
     #explication {
+        opacity: 0;
         display: flex;
         flex-direction: column;
         height: 450px;
@@ -612,10 +659,37 @@ export default {
         opacity: 0.8;
     }
 
+    .btn-newsletter {
+        -webkit-transition-duration: 0.31s; /* Safari */
+        transition-duration: 0.31s;
+        background-color: transparent;
+        height: 35px;
+        width: 65px;
+        border: white 2px solid;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .btn-newsletter:hover {
+        height: 40px;
+        width: 70px;
+        font-size: 11px;
+    }
+
+    input{
+        height: 25px;
+        width: 220px;
+        border-radius: 15px;
+        margin-bottom: 10px;
+    }
+
     /*ANIMATION*/
 
     .run-slide30FromTop {
-        animation: slide30FromTop ease-in-out 1.2s;
+        animation: slide30FromTop ease-in-out 1.2s forwards;
+        animation-delay: 0.3s;
     }
 
     @keyframes slide30FromTop {
@@ -628,7 +702,8 @@ export default {
     }
 
     .run-slide30FromBottom {
-        animation: slide30FromBottom ease-out 1.2s;
+        animation: slide30FromBottom ease-out 1s forwards;
+        animation-delay: 0.7s;
     }
 
     @keyframes slide30FromBottom {

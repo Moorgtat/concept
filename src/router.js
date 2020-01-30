@@ -12,14 +12,14 @@ export const router = new Router({
             component: () => import('./components/Concept')
         },
         {
-            path: '/concept',
-            name: 'Concept',
-            component: () => import('./components/Concept')
-        },
-        {
             path: '/menu',
             name: 'Menu',
             component: () => import('./components/Menu')
+        },
+        {
+            path: '/lequipe',
+            name: 'Team',
+            component: () => import('./components/Team')
         },
         {
             path: '/contact',
@@ -30,10 +30,10 @@ export const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-    const publicPages = ['/', '/concept', '/menu', '/contact'];
+    const publicPages = ['/', '/menu', '/lequipe', '/contact'];
     const authRequired = !publicPages.includes(to.path);
     if (authRequired) {
-        return next('/concept')
+        return next('/')
     }
     next()
 });
