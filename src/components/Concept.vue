@@ -42,7 +42,7 @@
 <!--        PRESENTATION-->
         <div id="presentation">
 
-            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animPresentationStatus }">
+            <div class="presentation-anim" :class="{ 'run-slide30FromBottom' : animPresentationStatus }">
             <div class="marge-auto">
                <div class="startline">
                    <font-awesome-icon icon="star"/>
@@ -57,7 +57,7 @@
                </div>
             </div>
 
-            <div class="presentation-anim" :class="{ 'run-slide30FromTop' : animPresentationStatus }">
+            <div class="presentation-anim" :class="{ 'run-slide30FromBottom' : animPresentationStatus }">
                 <div class="marge-auto">
                     <div class="startline">
                         <font-awesome-icon icon="star"/>
@@ -135,7 +135,7 @@
                     Sur place, à emporter ou livré !
                     </p>
 
-                    <div class="presentation-anim">
+                    <div class="presentation-anim restore-opacity">
                         <div class="marge-auto">
                             <div class="startline">
                                 <font-awesome-icon icon="star" size="m"/>
@@ -151,8 +151,20 @@
         </div>
 
 <!--        CAROUSEL AVIS-->
-          <div id="caroussel-avis">
-              <p class="marge-auto">Carroussel Avis</p>
+          <div id="carousel-avis" :class="{ 'run-slide30FromBottom' : animCarAvisStatus }">
+              <div class="carousel-avis-container">
+
+                  <div id="slider">
+                      <figure>
+                          <img src="../assets/carousel-avis-one.svg" alt="p1 alt"/>
+                          <img src="../assets/carousel-avis-two.svg" alt="p1 alt"/>
+                          <img src="../assets/carousel-avis-three.svg" alt="p1 alt"/>
+                          <img src="../assets/carousel-avis-for.svg" alt="p1 alt"/>
+                          <img src="../assets/carousel-avis-five.svg" alt="p1 alt"/>
+                      </figure>
+
+                  </div>
+              </div>
           </div>
 
 
@@ -174,16 +186,16 @@
             <div id="livraison">
                 <h2>Livraison</h2>
                 <p>LES SAVEURS DE NOTRE RESTAURANT</p>
-                <p>DIRECTEMENT CHEZ VOUS</p>
+                <p>DIRECTEMENT CHEZ VOUS !</p>
                 <button class="btn-newsletter">Me livrer</button>
             </div>
             <div id="divers">
                 <h2>Restons en contact !</h2>
-                <p>
-                    On vous envoie les offres du moment, des recettes et des nouvelles de l’équipe
-                </p>
-                <h2>Newsletter</h2>
-                <div><input placeholder="Votre adresse mail"/></div>
+                <p>On vous envoie les offres du moment, des recettes et des nouvelles de l’équipe</p>
+                <h3>Newsletter</h3>
+                <div>
+                <input placeholder="Votre adresse mail"/>
+                </div>
                 <button class="btn-newsletter">Envoyer</button>
             </div>
         </div>
@@ -214,11 +226,11 @@ export default {
       return {
           navbarStatus: '',
           animPresentationStatus: '',
-          animBandeauStatus:'',
           animUnoStatus: '',
           animDeuxioStatus:'',
           animTercioStatus:'',
-          animExplicationStatus:''
+          animExplicationStatus:'',
+          animCarAvisStatus: ''
       }
   },
     methods: {
@@ -280,16 +292,27 @@ export default {
             });
         });
 
+        let observer6 = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animCarAvisStatus =true;
+                    observer.unobserve(carAvisAnim);
+                }
+            });
+        });
+
         const presentationAnim = document.querySelector('.presentation-anim');
         const animExplication = document.getElementById('explication');
         const unoAnim = document.querySelector('.uno');
         const deuxioAnim = document.querySelector('.deuxio');
         const tercioAnim = document.querySelector('.tercio');
+        const carAvisAnim = document.getElementById('carousel-avis');
         observer.observe(presentationAnim);
         observer2.observe(animExplication);
         observer3.observe(unoAnim);
         observer4.observe(deuxioAnim);
         observer5.observe(tercioAnim);
+        observer6.observe(carAvisAnim);
     },
     destroyed () {
         window.removeEventListener('scroll', this.handleScroll);
@@ -377,7 +400,7 @@ export default {
         left: 0;
         width: 100%;
         height: 80px;
-        padding: 0 calc(20px + 15vw);
+        padding: 0 calc(20px + 5vw);
         box-sizing: border-box;
         transition: 1s;
         z-index: 2;
@@ -492,7 +515,6 @@ export default {
         margin: 5px;
     }
 
-
     /*BANDEAU 3P*/
 
     .tercio{
@@ -554,6 +576,7 @@ export default {
         display: flex;
         flex-direction: row;
         min-height:300px;
+        max-height: 450px;
         height: 28vw;
     }
 
@@ -599,33 +622,77 @@ export default {
     }
 
     /*CAROUSEL AVIS*/
-    #caroussel-avis {
+    #carousel-avis {
+        opacity: 0;
         display: flex;
-        height: 300px;
+        height: 400px;
+    }
+    .carousel-avis-container {
+        margin: auto;
+        width: 600px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
     }
 
+    div#slider {
+        width:600px;
+        height: 350px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    figure img {
+        width: 600px;
+        height: 350px;
+        float: left;
+    }
+
+   figure {
+        position: relative;
+        width: 3600px;
+        margin: 0;
+        left: 0;
+        animation: 30s slidy infinite;
+    }
+
+    @keyframes slidy {
+        0% { left: 0; opacity: 1}
+        19% { left: 0; opacity: 1}
+        20% { left: -100%; opacity: 1 }
+        39% { left: -100%; opacity: 1 }
+        40% { left: -200%; opacity: 1 }
+        59% { left: -200%; opacity: 1 }
+        60% { left: -300%; opacity: 1 }
+        79% { left: -300%; opacity: 1 }
+        80% { left: -400%; opacity: 1 }
+        99% { left: -400%; opacity: 1 }
+        100% { left: 0; opacity: 1}
+    }
 
     /*FOOTER*/
     #footer{
         background-color: #12171b;
-        height: 340px;
         display: flex;
         flex-direction: row;
-        padding: 60px 120px;
+        padding: 60px 10px;
         color: white;
     }
     #contacts {
+        min-width: 280px;
         width: 100%;
         padding: 20px;
     }
     #livraison {
+        min-width: 280px;
         padding: 20px;
         border-right: dashed 1px rgba(191, 191, 191, .3);
         border-left: dashed 1px rgba(191, 191, 191, .3);
         width: 100%;
-        height: 100%;
     }
     #divers {
+        min-width: 280px;
         width: 100%;
         padding: 20px;
     }
@@ -640,6 +707,7 @@ export default {
         padding: 30px;
     }
     .btn-footer{
+        outline-style:none;
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s;
         background-color: #12171b;
@@ -660,8 +728,8 @@ export default {
     }
 
     .btn-newsletter {
-        -webkit-transition-duration: 0.31s; /* Safari */
-        transition-duration: 0.31s;
+        outline-style:none;
+        transition: ease .5s;
         background-color: transparent;
         height: 35px;
         width: 65px;
@@ -673,8 +741,9 @@ export default {
     }
 
     .btn-newsletter:hover {
-        height: 40px;
-        width: 70px;
+        color: #12171b;
+        background-color: white;
+        font-weight: bold;
         font-size: 11px;
     }
 
@@ -685,25 +754,15 @@ export default {
         margin-bottom: 10px;
     }
 
+    .restore-opacity {
+        opacity: 1;
+    }
+
     /*ANIMATION*/
-
-    .run-slide30FromTop {
-        animation: slide30FromTop ease-in-out 1.2s forwards;
-        animation-delay: 0.3s;
-    }
-
-    @keyframes slide30FromTop {
-        from { transform: translateY(-30px);
-            opacity: 0;
-        }
-        to   { transform: translateY(0px);
-            opacity: 1;
-        }
-    }
 
     .run-slide30FromBottom {
         animation: slide30FromBottom ease-out 1s forwards;
-        animation-delay: 0.7s;
+        animation-delay: 0.4s;
     }
 
     @keyframes slide30FromBottom {
