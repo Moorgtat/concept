@@ -403,7 +403,7 @@ export default {
         padding: 0 calc(20px + 5vw);
         box-sizing: border-box;
         transition: 1s;
-        z-index: 2;
+        z-index: 3;
     }
 
     #nav .logo {
@@ -654,7 +654,7 @@ export default {
         width: 3600px;
         margin: 0;
         left: 0;
-        animation: 30s slidy infinite;
+        animation: 20s slidy infinite;
     }
 
     @keyframes slidy {
@@ -761,7 +761,7 @@ export default {
     /*ANIMATION*/
 
     .run-slide30FromBottom {
-        animation: slide30FromBottom ease-out 1s forwards;
+        animation: slide30FromBottom ease-in 1s forwards;
         animation-delay: 0.4s;
     }
 

@@ -1,20 +1,106 @@
 <template>
-    <div id="team">
-        <h1>L'equipe</h1>
+    <div id="Team">
+        <div class="first-half"></div>
+        <div class="perfect-mid">
+            <div id="titre"><strong>L'équipe</strong></div>
+        </div>
+        <div class="second-half">
+            <div class="texte-container"><p class="texte"> "Concept-One est un site concept pour un restaurant, les parties Menu,
+                L'équipe et Nous trouver, reste à personaliser."</p>
+            </div>
+            <div class="logo">
+                <div class="logo-container">
+                    <logo></logo>
+                </div>
+            </div>
+
+        </div>
+        <a href="/"> <button class="btn-content"><b>Retour</b></button> </a>
     </div>
 </template>
 
 <script>
+    import logo from "@/components/svg/logo";
     export default {
-        name: "Team"
+        name: "Team",
+        components: {
+            logo
+        }
     }
 </script>
 
 <style scoped>
-    #team{
-        height: 90vh;
+    @import url("https://fonts.googleapis.com/css?family=Sacramento");
+    #Team{
+        height: 100vh;
         width: 100%;
-        background-color: black;
         color: white;
+        text-align: center
     }
+    .first-half{
+        background-image: url('../assets/rest-three.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 50%;
+        width: 100%;
+    }
+    .second-half{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        height: 50%;
+        width: 100%;
+    }
+    .perfect-mid {
+        display: flex;
+        color: black;
+        background-color: white;
+        position: absolute;
+        border: 2px solid black;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 60px;
+        width: 180px;
+        z-index: 5;
+    }
+    #titre {
+        margin: auto;
+        font-family: 'Sacramento', sans-serif;
+        font-size: 32px;
+    }
+    .logo{
+        margin-top: 5vh;
+    }
+    .texte-container{
+        margin-bottom: 30px;
+    }
+    .texte {
+        font-family: "Sacramento", sans-serif;
+        margin: auto;
+        color: black;
+        font-size: 28px;
+        width: 500px;
+    }
+    .btn-content {
+        position: absolute;
+        left: 90%;
+        top: 90%;
+        outline-style:none;
+        transition: ease-in .2s;
+        background-color: white;
+        height: 35px;
+        width: 65px;
+        border: black 1px solid;
+        border-radius: 8px;
+        color: black;
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .btn-content:hover {
+        background-color: rgba(255,140,0,0.1);
+    }
+
 </style>
