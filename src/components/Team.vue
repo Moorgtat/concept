@@ -104,13 +104,13 @@
         background-color: rgba(255,140,0,0.1);
     }
 
-    @media (max-height: 600px) {
+    @media (max-height: 500px) {
         .perfect-mid{
             top:30%;
         }
 
         .texte{
-            margin-top: 30px;
+            margin-top: 15px;
         }
         .texte-container{
             margin: 0;

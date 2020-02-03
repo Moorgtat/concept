@@ -1,6 +1,5 @@
 <template>
     <div id="Home">
-
 <!--        NAVBAR-->
         <div id="nav" :class="{ white : navbarStatus }">
             <div class="logo">
@@ -14,12 +13,25 @@
                     <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/contact">Nous trouver</a></li>
                 </ul>
             </div>
-            <div id="burger">
+            <div id="burger" @click="sidebarStatus = !sidebarStatus">
                 <div class="line" :class="{ 'black-line' : navbarStatus }"></div>
                 <div class="line" :class="{ 'black-line' : navbarStatus }"></div>
                 <div class="line" :class="{ 'black-line' : navbarStatus }"></div>
             </div>
         </div>
+
+        <transition enter-active-class="run-sidebar-entrance" leave-active-class="run-sidebar-leave">
+        <div id="sidebar" v-show="sidebarStatus">
+            <div>
+                <ul>
+                    <li><a href="/"><font-awesome-icon class="ico-sidebar" icon="star" size="xs" style="color: rgb(214, 111, 53)"/>Acceuil</a></li>
+                    <li><a href="/menu"><font-awesome-icon icon="star" class="ico-sidebar" size="xs" style="color: rgb(214, 111, 53)"/>Menu</a></li>
+                    <li><a href="/lequipe"><font-awesome-icon icon="star" class="ico-sidebar" size="xs" style="color: rgb(214, 111, 53)"/>L'équipe</a></li>
+                    <li><a href="/contact"><font-awesome-icon icon="star" class="ico-sidebar" size="xs" style="color: rgb(214, 111, 53)"/>Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        </transition>
 
 <!--        ANIM CAROUSEL <a> -->
         <div id="ACA">
@@ -50,7 +62,7 @@
             <div class="presentation-anim" :class="{ 'run-fadeIn' : animPresentationStatus }">
             <div class="marge-auto">
                <div class="startline">
-                   <font-awesome-icon icon="star"/>
+                   <font-awesome-icon icon="star" size="sm"/>
                </div>
             </div>
             </div>
@@ -65,7 +77,7 @@
             <div class="presentation-anim" :class="{ 'run-fadeIn' : animPresentationStatus }">
                 <div class="marge-auto">
                     <div class="startline">
-                        <font-awesome-icon icon="star"/>
+                        <font-awesome-icon icon="star" size="sm"/>
                     </div>
                 </div>
             </div>
@@ -143,14 +155,13 @@
                     <div class="presentation-anim restore-opacity">
                         <div class="marge-auto">
                             <div class="startline">
-                                <font-awesome-icon icon="star" size="m"/>
+                                <font-awesome-icon icon="star" size="sm"/>
                             </div>
                         </div>
                     </div>
-
-                    <h1>
+                    <h2>
                     ILS PARLENT DE NOUS !
-                    </h1>
+                    </h2>
                 </div>
             </div>
         </div>
@@ -246,7 +257,8 @@ export default {
           animTercioStatus:'',
           animExplicationStatus:'',
           animCarAvisStatus: '',
-          animCarAvisSmallStatus: ''
+          animCarAvisSmallStatus: '',
+          sidebarStatus: false
       }
   },
     methods: {
@@ -439,7 +451,80 @@ export default {
         from { top: 18%; opacity: 0; }
         to { top: 32%; opacity: 1; }
     }
-    
+
+    /*SIDEBAR*/
+    #sidebar {
+        z-index: 4;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        font-family: "Roboto Condensed", sans-serif;
+        margin: 0;
+        width: 120px;
+        height: 100%;
+        left: 0;
+        background-color: rgb(17, 17, 17);
+        overflow-y: scroll;
+    }
+
+    #sidebar ul{
+        list-style-type: none;
+        position: absolute;
+        padding-left: 0;
+        margin-left: 10px;
+        width: 80%;
+        top: 50px;
+    }
+    #sidebar li {
+        border-bottom: dashed 1px rgba(191, 191, 191, .3);
+        left: 0;
+        text-align: left;
+        width: 100%;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+
+    #sidebar li a {
+        text-decoration: none;
+        font-size: 15px;
+        color: white;
+    }
+
+    .ico-sidebar{
+        padding-right: 5px;
+    }
+
+    .run-sidebar-entrance {
+        animation: sidebar-entrance ease-in forwards .5s;
+    }
+
+    @keyframes sidebar-entrance {
+        from {
+              transform: translateX(-160px);
+              opacity: 1;
+        }
+        to   {
+             transform: translateY(0);
+             opacity: 1;
+        }
+    }
+
+    .run-sidebar-leave {
+        animation: sidebar-leave ease-in forwards .5s;
+    }
+
+    @keyframes sidebar-leave {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to   {
+            transform: translateX(-160px);
+            opacity: 1;
+        }
+    }
+
+
     /*NAVBAR*/
     #nav {
         position: fixed;
@@ -459,10 +544,10 @@ export default {
     }
 
     #nav ul {
-        float: right;
         margin: 0;
         padding: 0;
         display: flex;
+        float: right;
     }
 
     #nav ul li {
@@ -756,7 +841,7 @@ export default {
         background-color: #12171b;
         display: flex;
         flex-direction: row;
-        padding: 60px 10px;
+        padding: 60px 20px;
         color: white;
     }
     #contacts {
@@ -911,7 +996,8 @@ export default {
         /*FOOTER*/
         #footer {
             flex-direction: column;
-            margin-top: 60px;
+            margin-top: 10px;
+            padding: 30px 10px;
         }
 
         #contacts, #livraison, #divers {
@@ -1001,6 +1087,9 @@ export default {
 
     @media (min-width: 700px) {
         #burger{
+            display: none;
+        }
+        #sidebar{
             display: none;
         }
     }
