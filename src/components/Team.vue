@@ -2,7 +2,7 @@
     <div id="Team">
         <div class="first-half"></div>
         <div class="perfect-mid">
-            <div id="titre"><strong>L'équipe</strong></div>
+            <div id="titre">L'équipe</div>
         </div>
         <div class="second-half">
             <div class="texte-container"><p class="texte"> "Concept-One est un site concept pour un restaurant, les parties Menu,
@@ -31,6 +31,7 @@
 
 <style scoped>
     @import url("https://fonts.googleapis.com/css?family=Sacramento");
+    @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
     #Team{
         height: 100vh;
         width: 100%;
@@ -38,7 +39,7 @@
         text-align: center
     }
     .first-half{
-        background-image: url('../assets/rest-three.jpg');
+        background-image: url("../assets/rest-five.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         height: 50%;
@@ -67,8 +68,8 @@
     }
     #titre {
         margin: auto;
-        font-family: 'Sacramento', sans-serif;
-        font-size: 32px;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 28px;
     }
     .logo{
         margin-top: 5vh;

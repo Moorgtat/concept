@@ -42,7 +42,7 @@
 <!--        PRESENTATION-->
         <div id="presentation">
 
-            <div class="presentation-anim" :class="{ 'run-slide30FromBottom' : animPresentationStatus }">
+            <div class="presentation-anim" :class="{ 'run-fadeIn' : animPresentationStatus }">
             <div class="marge-auto">
                <div class="startline">
                    <font-awesome-icon icon="star"/>
@@ -52,12 +52,12 @@
 
             <div id="texte-presentation">
                <div class="marge-auto">
-                   <p><strong>LE SITE DE VOTRE RESTAURANT C'EST</strong></p>
-                   <p><strong>NOTRE METIER DE VOUS EN RENDRE FIER</strong></p>
+                   <p>LE SITE DE VOTRE RESTAURANT C'EST</p>
+                   <p>NOTRE METIER DE VOUS EN RENDRE FIER</p>
                </div>
             </div>
 
-            <div class="presentation-anim" :class="{ 'run-slide30FromBottom' : animPresentationStatus }">
+            <div class="presentation-anim" :class="{ 'run-fadeIn' : animPresentationStatus }">
                 <div class="marge-auto">
                     <div class="startline">
                         <font-awesome-icon icon="star"/>
@@ -72,17 +72,17 @@
     <!--    BANDEAU TROIS PHOTOS-->
     <div class="bandeau-3p tercio" :class="{'run-slide30FromBottom' : animTercioStatus}">
         <div class="parent mr4">
-            <div class="img3p bg-one">
+            <div class="img3p bg-for">
                 <p><a href=""> Notre restaurant </a></p>
             </div>
         </div>
         <div class="parent mr4">
-            <div class="img3p bg-two">
+            <div class="img3p bg-five">
                 <p><a href=""> Nos menus </a></p>
             </div>
         </div>
         <div class="parent">
-            <div class="img3p bg-three">
+            <div class="img3p bg-six">
                 <p><a href=""> Nous trouver </a></p>
             </div>
         </div>
@@ -90,9 +90,9 @@
 
      <!--    BANDEAU DEUX PHOTOS-->
         <div class="bandeau-deux-photos uno" :class="{'run-slide30FromBottom' : animUnoStatus}">
-            <div class="img2p-one bg-one">
+            <div class="img2p-one bg-seven">
             </div>
-            <div class="img2p-two bg-two-dark text-white">
+            <div class="img2p-two bg-eight text-white">
                 <div class="marge-auto">
                     <p style="font-size: 20px; padding: 20px;">
                         Le site de votre restaurant, comme vous ne l'avez jamais vu.
@@ -107,7 +107,7 @@
         <div class="b2p-texte">
             <p class="marge-auto pad25 ft32">Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
         </div>
-        <div class="img2p-two bg-three">
+        <div class="img2p-two bg-nine">
         </div>
     </div>
 </div>
@@ -330,19 +330,39 @@ export default {
 
     /*BACKGROUND*/
     .bg-one {
-        background-image: url("../assets/food-one.jpg");
+        background-image: url("../assets/rest-five.jpg");
     }
 
     .bg-two {
-        background-image: url("../assets/food-two.jpg");
+        background-image: url("../assets/food-food.jpg");
     }
 
     .bg-three {
-        background-image: url("../assets/food-three.jpg");
+        background-image: url("../assets/rest-white.jpg");
     }
 
-    .bg-two-dark {
-        background-image: url("../assets/food-two-dark.jpg");
+    .bg-for{
+        background-image: url("../assets/rest-six.jpg");
+    }
+
+    .bg-five{
+        background-image: url("../assets/food-menu.jpg");
+    }
+
+    .bg-six{
+        background-image: url("../assets/rest-find.jpg");
+    }
+
+    .bg-seven {
+        background-image: url("../assets/rest-rest.jpg");
+    }
+
+    .bg-eight{
+        background-image: url("../assets/rest-white.jpg");
+    }
+
+    .bg-nine{
+        background-image: url("../assets/food-food.jpg");
     }
 
     /*CLASS STYLE*/
@@ -761,12 +781,22 @@ export default {
     /*ANIMATION*/
 
     .run-slide30FromBottom {
-        animation: slide30FromBottom ease-in 1s forwards;
-        animation-delay: 0.4s;
+        animation: slide30FromBottom ease-in 0.4s forwards;
+        animation-delay: 0.2s;
     }
 
     @keyframes slide30FromBottom {
        from    {transform: translateY(160px); opacity: 0;}
        to  { transform: translateY(0px); opacity: 1;}
+    }
+
+    .run-fadeIn{
+        animation: fadeIn ease-in 0.4s forwards;
+        animation-delay: 0.2s;
+    }
+
+    @keyframes fadeIn {
+        from  {opacity: 0;}
+        to    { opacity: 1;}
     }
 </style>
