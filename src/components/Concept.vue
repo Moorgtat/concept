@@ -1,16 +1,21 @@
 <template>
     <div id="Home">
-<!--        NAVBAR-->
+        <!--        NAVBAR-->
         <div id="nav" :class="{ white : navbarStatus }">
             <div class="logo">
-                <a href="/"><logo></logo></a>
+                <a href="/">
+                    <logo></logo>
+                </a>
             </div>
             <div class="menu">
                 <ul>
                     <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus}" href="/">Accueil</a></li>
-                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/menu">Menu</a></li>
-                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/lequipe">L'équipe</a></li>
-                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/contact">Nous trouver</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/menu">Menu</a>
+                    </li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }"
+                           href="/lequipe">L'équipe</a></li>
+                    <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/contact">Nous
+                        trouver</a></li>
                 </ul>
             </div>
             <div id="burger" @click="sidebarStatus = !sidebarStatus">
@@ -21,27 +26,39 @@
         </div>
 
         <transition enter-active-class="run-sidebar-entrance" leave-active-class="run-sidebar-leave">
-        <div id="sidebar" v-show="sidebarStatus">
-            <div>
-                <ul>
-                    <li><a href="/"><font-awesome-icon class="ico-sidebar" icon="star" size="xs" style="color: rgb(214, 111, 53)"/>Acceuil</a></li>
-                    <li><a href="/menu"><font-awesome-icon icon="star" class="ico-sidebar" size="xs" style="color: rgb(214, 111, 53)"/>Menu</a></li>
-                    <li><a href="/lequipe"><font-awesome-icon icon="star" class="ico-sidebar" size="xs" style="color: rgb(214, 111, 53)"/>L'équipe</a></li>
-                    <li><a href="/contact"><font-awesome-icon icon="star" class="ico-sidebar" size="xs" style="color: rgb(214, 111, 53)"/>Contact</a></li>
-                </ul>
+            <div id="sidebar" v-show="sidebarStatus">
+                <div>
+                    <ul>
+                        <li><a href="/">
+                            <font-awesome-icon class="ico-sidebar" icon="star" size="xs"
+                                               style="color: rgb(214, 111, 53)"/>
+                            Accueil</a></li>
+                        <li><a href="/menu">
+                            <font-awesome-icon icon="star" class="ico-sidebar" size="xs"
+                                               style="color: rgb(214, 111, 53)"/>
+                            Menu</a></li>
+                        <li><a href="/lequipe">
+                            <font-awesome-icon icon="star" class="ico-sidebar" size="xs"
+                                               style="color: rgb(214, 111, 53)"/>
+                            L'équipe</a></li>
+                        <li><a href="/contact">
+                            <font-awesome-icon icon="star" class="ico-sidebar" size="xs"
+                                               style="color: rgb(214, 111, 53)"/>
+                            Contact</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
         </transition>
 
-<!--        ANIM CAROUSEL <a> -->
+        <!--        ANIM CAROUSEL <a> -->
         <div id="ACA">
             <div id="bigtest" class="liencar run-animation">
-                <p style="margin-bottom: 25px"><a href=""><b> NOS RESTAURANTS </b></a> </p>
+                <p style="margin-bottom: 25px"><a href=""><b> NOS RESTAURANTS </b></a></p>
                 <p><a href=""><b> ME FAIRE LIVRER </b></a></p>
             </div>
         </div>
 
-<!--        CAROUSEL-->
+        <!--        CAROUSEL-->
         <div id="carousel" @click.prevent="resetAcaAnim">
             <Carousel>
                 <Carousel-slide>
@@ -56,22 +73,22 @@
             </Carousel>
         </div>
 
-<!--        PRESENTATION-->
+        <!--        PRESENTATION-->
         <div id="presentation">
 
             <div class="presentation-anim" :class="{ 'run-fadeIn' : animPresentationStatus }">
-            <div class="marge-auto">
-               <div class="startline">
-                   <font-awesome-icon icon="star" size="sm"/>
-               </div>
-            </div>
+                <div class="marge-auto">
+                    <div class="startline">
+                        <font-awesome-icon icon="star" size="sm"/>
+                    </div>
+                </div>
             </div>
 
             <div id="texte-presentation">
-               <div class="marge-auto">
-                   <p>LE SITE DE VOTRE RESTAURANT C'EST</p>
-                   <p>NOTRE METIER DE VOUS EN RENDRE FIER</p>
-               </div>
+                <div class="marge-auto">
+                    <p>LE SITE DE VOTRE RESTAURANT C'EST</p>
+                    <p>NOTRE METIER DE VOUS EN RENDRE FIER</p>
+                </div>
             </div>
 
             <div class="presentation-anim" :class="{ 'run-fadeIn' : animPresentationStatus }">
@@ -83,73 +100,74 @@
             </div>
         </div>
 
-    <!--    BANDEAUX-->
-<div id="bandeau-container">
+        <!--    BANDEAUX-->
+        <div id="bandeau-container">
 
-    <!--    BANDEAU TROIS PHOTOS-->
-    <div class="bandeau-3p tercio" :class="{'run-slide30FromBottom' : animTercioStatus}">
-        <div class="parent mr4">
-            <div class="img3p bg-for">
-                <p><a href=""> Notre restaurant </a></p>
+            <!--    BANDEAU TROIS PHOTOS-->
+            <div class="bandeau-3p tercio" :class="{'run-slide30FromBottom' : animTercioStatus}">
+                <div class="parent mr4">
+                    <div class="img3p bg-for">
+                        <p><a href=""> Notre restaurant </a></p>
+                    </div>
+                </div>
+                <div class="parent mr4">
+                    <div class="img3p bg-five">
+                        <p><a href=""> Nos menus </a></p>
+                    </div>
+                </div>
+                <div class="parent">
+                    <div class="img3p bg-six">
+                        <p><a href=""> Nous trouver </a></p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="parent mr4">
-            <div class="img3p bg-five">
-                <p><a href=""> Nos menus </a></p>
-            </div>
-        </div>
-        <div class="parent">
-            <div class="img3p bg-six">
-                <p><a href=""> Nous trouver </a></p>
-            </div>
-        </div>
-    </div>
 
-     <!--    BANDEAU DEUX PHOTOS-->
-        <div class="bandeau-deux-photos uno" :class="{'run-slide30FromBottom' : animUnoStatus}">
-            <div class="img2p-one bg-seven">
+            <!--    BANDEAU DEUX PHOTOS-->
+            <div class="bandeau-deux-photos uno" :class="{'run-slide30FromBottom' : animUnoStatus}">
+                <div class="img2p-one bg-seven">
+                </div>
+                <div class="img2p-two bg-eight text-white">
+                    <div class="marge-auto">
+                        <p class="img2p-two-texte">
+                            Le site de votre restaurant, comme vous ne l'avez jamais vu.
+                            Le site de votre restaurant, comme vous ne l'avez jamais vu.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="img2p-two bg-eight text-white">
-                <div class="marge-auto">
-                    <p class="img2p-two-texte">
-                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
-                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
-                    </p>
+
+            <!--    BANDEAU DEUX PHOTOS-->
+            <div class="bandeau-deux-photos deuxio" :class="{'run-slide30FromBottom' : animDeuxioStatus}">
+                <div class="b2p-texte">
+                    <p class="marge-auto pad25 ft32">Le site de votre restaurant, c'est à nous de vous en rendre
+                        fier.</p>
+                </div>
+                <div class="img2p-two bg-nine">
                 </div>
             </div>
         </div>
 
-    <!--    BANDEAU DEUX PHOTOS-->
-    <div class="bandeau-deux-photos deuxio" :class="{'run-slide30FromBottom' : animDeuxioStatus}">
-        <div class="b2p-texte">
-            <p class="marge-auto pad25 ft32">Le site de votre restaurant, c'est à nous de vous en rendre fier.</p>
-        </div>
-        <div class="img2p-two bg-nine">
-        </div>
-    </div>
-</div>
-
-<!--        EXPLICATION-->
+        <!--        EXPLICATION-->
         <div id="explication" :class="{'run-slide30FromBottom' : animExplicationStatus}">
             <div class="biglogo">
-               <div class="marge-auto">
-                   <img id="img-big-logo" src="../assets/biglogo.svg"/>
-               </div>
+                <div class="marge-auto">
+                    <img id="img-big-logo" src="../assets/biglogo.svg" alt="big logo"/>
+                </div>
             </div>
             <div class="expli-texte marge-auto">
                 <div style="text-align: center">
                     <h2>
-                    Un concept de site pour votre restaurant !
+                        Un concept de site pour votre restaurant !
                     </h2>
                     <p>
-                    Le numero, l'adresse ainsi que la ville de mon restaurant!
+                        Le numero, l'adresse ainsi que la ville de mon restaurant!
                     </p>
                     <p>
-                    Les horaires que je pratique.
+                        Les horaires que je pratique.
                     </p>
                     <p>
-                    Au menu votre cuisine, vos saveurs, votre univers!
-                    Sur place, à emporter ou livré !
+                        Au menu votre cuisine, vos saveurs, votre univers!
+                        Sur place, à emporter ou livré !
                     </p>
 
                     <div class="presentation-anim restore-opacity">
@@ -160,26 +178,26 @@
                         </div>
                     </div>
                     <h2>
-                    ILS PARLENT DE NOUS !
+                        ILS PARLENT DE NOUS !
                     </h2>
                 </div>
             </div>
         </div>
 
-<!--        CAROUSEL AVIS-->
-          <div id="carousel-avis" :class="{ 'run-slide30FromBottom' : animCarAvisStatus }">
-              <div class="carousel-avis-container">
-                  <div id="slider">
-                      <figure>
-                          <img src="../assets/carousel-avis-one.svg" alt="p1 alt"/>
-                          <img src="../assets/carousel-avis-two.svg" alt="p1 alt"/>
-                          <img src="../assets/carousel-avis-three.svg" alt="p1 alt"/>
-                          <img src="../assets/carousel-avis-for.svg" alt="p1 alt"/>
-                          <img src="../assets/carousel-avis-five.svg" alt="p1 alt"/>
-                      </figure>
-                  </div>
-              </div>
-          </div>
+        <!--        CAROUSEL AVIS-->
+        <div id="carousel-avis" :class="{ 'run-slide30FromBottom' : animCarAvisStatus }">
+            <div class="carousel-avis-container">
+                <div id="slider">
+                    <figure>
+                        <img src="../assets/carousel-avis-one.svg" alt="p1 alt"/>
+                        <img src="../assets/carousel-avis-two.svg" alt="p1 alt"/>
+                        <img src="../assets/carousel-avis-three.svg" alt="p1 alt"/>
+                        <img src="../assets/carousel-avis-for.svg" alt="p1 alt"/>
+                        <img src="../assets/carousel-avis-five.svg" alt="p1 alt"/>
+                    </figure>
+                </div>
+            </div>
+        </div>
 
         <div id="carousel-avis-small" :class="{ 'run-slide30FromBottom' : animCarAvisSmallStatus }">
             <div class="carousel-avis-small-container">
@@ -196,19 +214,19 @@
         </div>
 
 
-<!--        FOOTER-->
+        <!--        FOOTER-->
         <div id="footer">
             <div id="contacts">
-            <h2>  NOTRE RESTAURANT </h2>
-                 <p>
-                Notre Adresse
-                 </p>
+                <h2> NOTRE RESTAURANT </h2>
                 <p>
-                 Contactez-nous par mail!
+                    Notre Adresse
                 </p>
                 <p>
-                 ENVIE DE NOUS REJOINDRE ?
-                 C'EST ICI : manager@concept-one.fr
+                    Contactez-nous par mail!
+                </p>
+                <p>
+                    ENVIE DE NOUS REJOINDRE ?
+                    C'EST ICI : manager@concept-one.fr
                 </p>
             </div>
             <div id="livraison">
@@ -222,16 +240,18 @@
                 <p>On vous envoie les offres du moment, des recettes et des nouvelles de l’équipe</p>
                 <h3>Newsletter</h3>
                 <div>
-                <input placeholder="Votre adresse mail"/>
+                    <input placeholder="Votre adresse mail"/>
                 </div>
                 <button class="btn-newsletter">Envoyer</button>
             </div>
         </div>
 
         <div class="surplus">
-<div class="surplus-content">
-   <a href="#carousel"><button class="btn-footer">Haut</button></a>
-</div>
+            <div class="surplus-content">
+                <a href="#carousel">
+                    <button class="btn-footer">Haut</button>
+                </a>
+            </div>
         </div>
 
     </div>
@@ -241,122 +261,123 @@
     import logo from "@/components/svg/logo";
     import Carousel from "@/components/carousel/Carousel";
     import CarouselSlide from "@/components/carousel/CarouselSlide";
-export default {
-  name: 'Concept',
-    components: {
-      Carousel,
-      CarouselSlide,
-      logo
-    },
-    data () {
-      return {
-          navbarStatus: '',
-          animPresentationStatus: '',
-          animUnoStatus: '',
-          animDeuxioStatus:'',
-          animTercioStatus:'',
-          animExplicationStatus:'',
-          animCarAvisStatus: '',
-          animCarAvisSmallStatus: '',
-          sidebarStatus: false
-      }
-  },
-    methods: {
-        handleScroll () {
-            this.navbarStatus = !!(window.scrollY << 18);
+
+    export default {
+        name: 'Concept',
+        components: {
+            Carousel,
+            CarouselSlide,
+            logo
         },
-        resetAcaAnim: function () {
-            let element = document.getElementById('bigtest');
-            element.classList.remove("run-animation");
-            setTimeout(() => element.classList.add("run-animation"), 0);
+        data() {
+            return {
+                navbarStatus: '',
+                animPresentationStatus: '',
+                animUnoStatus: '',
+                animDeuxioStatus: '',
+                animTercioStatus: '',
+                animExplicationStatus: '',
+                animCarAvisStatus: '',
+                animCarAvisSmallStatus: '',
+                sidebarStatus: false
+            }
+        },
+        methods: {
+            handleScroll() {
+                this.navbarStatus = !!(window.scrollY << 18);
+            },
+            resetAcaAnim: function () {
+                let element = document.getElementById('bigtest');
+                element.classList.remove("run-animation");
+                setTimeout(() => element.classList.add("run-animation"), 0);
+            }
+        },
+        created() {
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        mounted() {
+            let observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animPresentationStatus = true;
+                        observer.unobserve(presentationAnim);
+                    }
+                });
+            });
+
+            let observer2 = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animExplicationStatus = true;
+                        observer.unobserve(animExplication);
+                    }
+                });
+            });
+
+            let observer3 = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animUnoStatus = true;
+                        observer.unobserve(unoAnim);
+                    }
+                });
+            });
+
+            let observer4 = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animDeuxioStatus = true;
+                        observer.unobserve(deuxioAnim);
+                    }
+                });
+            });
+
+            let observer5 = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animTercioStatus = true;
+                        observer.unobserve(tercioAnim);
+                    }
+                });
+            });
+
+            let observer6 = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animCarAvisStatus = true;
+                        observer.unobserve(carAvisAnim);
+                    }
+                });
+            });
+
+            let observer7 = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.animCarAvisSmallStatus = true;
+                        observer.unobserve(carAvisSmallAnim);
+                    }
+                });
+            });
+
+            const presentationAnim = document.querySelector('.presentation-anim');
+            const animExplication = document.getElementById('explication');
+            const unoAnim = document.querySelector('.uno');
+            const deuxioAnim = document.querySelector('.deuxio');
+            const tercioAnim = document.querySelector('.tercio');
+            const carAvisAnim = document.getElementById('carousel-avis');
+            const carAvisSmallAnim = document.getElementById('carousel-avis-small');
+            observer.observe(presentationAnim);
+            observer2.observe(animExplication);
+            observer3.observe(unoAnim);
+            observer4.observe(deuxioAnim);
+            observer5.observe(tercioAnim);
+            observer6.observe(carAvisAnim);
+            observer7.observe(carAvisSmallAnim);
+        },
+        destroyed() {
+            window.removeEventListener('scroll', this.handleScroll);
         }
-    },
-    created () {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    mounted (){
-        let observer = new IntersectionObserver( entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animPresentationStatus = true;
-                    observer.unobserve(presentationAnim);
-                }
-            });
-        });
-
-        let observer2 = new IntersectionObserver( entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animExplicationStatus =true;
-                    observer.unobserve(animExplication);
-                }
-            });
-        });
-
-        let observer3 = new IntersectionObserver( entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animUnoStatus = true;
-                    observer.unobserve(unoAnim);
-                }
-            });
-        });
-
-        let observer4 = new IntersectionObserver( entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animDeuxioStatus =true;
-                    observer.unobserve(deuxioAnim);
-                }
-            });
-        });
-
-        let observer5 = new IntersectionObserver( entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animTercioStatus =true;
-                    observer.unobserve(tercioAnim);
-                }
-            });
-        });
-
-        let observer6 = new IntersectionObserver( entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animCarAvisStatus =true;
-                    observer.unobserve(carAvisAnim);
-                }
-            });
-        });
-
-        let observer7 = new IntersectionObserver( entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animCarAvisSmallStatus =true;
-                    observer.unobserve(carAvisSmallAnim);
-                }
-            });
-        });
-
-        const presentationAnim = document.querySelector('.presentation-anim');
-        const animExplication = document.getElementById('explication');
-        const unoAnim = document.querySelector('.uno');
-        const deuxioAnim = document.querySelector('.deuxio');
-        const tercioAnim = document.querySelector('.tercio');
-        const carAvisAnim = document.getElementById('carousel-avis');
-        const carAvisSmallAnim = document.getElementById('carousel-avis-small');
-        observer.observe(presentationAnim);
-        observer2.observe(animExplication);
-        observer3.observe(unoAnim);
-        observer4.observe(deuxioAnim);
-        observer5.observe(tercioAnim);
-        observer6.observe(carAvisAnim);
-        observer7.observe(carAvisSmallAnim);
-    },
-    destroyed () {
-        window.removeEventListener('scroll', this.handleScroll);
     }
-}
 </script>
 
 <style scoped>
@@ -380,15 +401,15 @@ export default {
         background-image: url("../assets/rest-white.jpg");
     }
 
-    .bg-for{
+    .bg-for {
         background-image: url("../assets/rest-six.jpg");
     }
 
-    .bg-five{
+    .bg-five {
         background-image: url("../assets/food-menu.jpg");
     }
 
-    .bg-six{
+    .bg-six {
         background-image: url("../assets/rest-find.jpg");
     }
 
@@ -396,11 +417,11 @@ export default {
         background-image: url("../assets/rest-rest.jpg");
     }
 
-    .bg-eight{
+    .bg-eight {
         background-image: url("../assets/rest-white.jpg");
     }
 
-    .bg-nine{
+    .bg-nine {
         background-image: url("../assets/food-food.jpg");
     }
 
@@ -422,10 +443,10 @@ export default {
     }
 
     /*ANIM ACCUEIL <a>*/
-    #ACA{
+    #ACA {
         background: transparent;
         position: absolute;
-        top:80px;
+        top: 80px;
         left: 10%;
         width: 80%;
         height: 90vh;
@@ -433,12 +454,12 @@ export default {
         z-index: 1;
     }
 
-    .liencar{
+    .liencar {
         position: relative;
-        top:32%;
+        top: 32%;
     }
 
-    .liencar a{
+    .liencar a {
         color: white;
         font-size: 42px;
     }
@@ -448,8 +469,14 @@ export default {
     }
 
     @keyframes comeFB {
-        from { top: 18%; opacity: 0; }
-        to { top: 32%; opacity: 1; }
+        from {
+            top: 18%;
+            opacity: 0;
+        }
+        to {
+            top: 32%;
+            opacity: 1;
+        }
     }
 
     /*SIDEBAR*/
@@ -467,7 +494,7 @@ export default {
         overflow-y: scroll;
     }
 
-    #sidebar ul{
+    #sidebar ul {
         list-style-type: none;
         position: absolute;
         padding-left: 0;
@@ -475,6 +502,7 @@ export default {
         width: 80%;
         top: 50px;
     }
+
     #sidebar li {
         border-bottom: dashed 1px rgba(191, 191, 191, .3);
         left: 0;
@@ -490,7 +518,7 @@ export default {
         color: white;
     }
 
-    .ico-sidebar{
+    .ico-sidebar {
         padding-right: 5px;
     }
 
@@ -500,12 +528,16 @@ export default {
 
     @keyframes sidebar-entrance {
         from {
-              transform: translateX(-160px);
-              opacity: 1;
+            -webkit-transform: translateY(-160px);
+            -ms-transform : translateY(-160px);
+            transform: translateX(-160px);
+            opacity: 1;
         }
-        to   {
-             transform: translateY(0);
-             opacity: 1;
+        to {
+            -webkit-transform: translateY(0);
+            -ms-transform : translateY(0);
+            transform: translateY(0);
+            opacity: 1;
         }
     }
 
@@ -515,11 +547,15 @@ export default {
 
     @keyframes sidebar-leave {
         from {
+            -webkit-transform: translateY(0);
+            -ms-transform : translateY(0);
             transform: translateY(0);
             opacity: 1;
         }
-        to   {
-            transform: translateX(-160px);
+        to {
+            -webkit-transform: translateY(-160px);
+            -ms-transform : translateY(-160px);
+            transform: translateY(-160px);
             opacity: 1;
         }
     }
@@ -574,7 +610,7 @@ export default {
         transition: .5s;
     }
 
-    .white{
+    .white {
         background: white;
     }
 
@@ -586,6 +622,7 @@ export default {
         width: 50px;
         height: 50px;
     }
+
     .line {
         width: 30px;
         height: 3px;
@@ -594,7 +631,7 @@ export default {
         background-color: white;
     }
 
-    .black-line{
+    .black-line {
         background-color: black;
     }
 
@@ -602,6 +639,7 @@ export default {
     #carousel {
         width: 100%;
     }
+
     .img-carousel {
         width: 100%;
         height: 100vh;
@@ -624,7 +662,7 @@ export default {
         height: 210px;
     }
 
-    .presentation-anim{
+    .presentation-anim {
         opacity: 0;
         display: flex;
         margin: 5px;
@@ -638,7 +676,7 @@ export default {
     }
 
     .startline::before {
-        content:'';
+        content: '';
         display: block;
         width: 180px;
         height: 2px;
@@ -650,7 +688,7 @@ export default {
     }
 
     .startline::after {
-        content:'';
+        content: '';
         display: block;
         width: 180px;
         height: 2px;
@@ -663,17 +701,17 @@ export default {
 
     /*BANDEAUX*/
 
-    #bandeau-container{
+    #bandeau-container {
         margin: 5px;
     }
 
     /*BANDEAU 3P*/
 
-    .tercio{
+    .tercio {
         opacity: 0;
     }
 
-    .bandeau-3p{
+    .bandeau-3p {
         margin-bottom: 5px;
         display: flex;
         flex-direction: row;
@@ -684,19 +722,19 @@ export default {
     .bandeau-3p a {
         text-decoration: none;
         color: white;
-        font-size:calc(12px + 1.3vw);
+        font-size: calc(12px + 1.3vw);
     }
 
-    .parent{
+    .parent {
         width: 100%;
         overflow: hidden;
     }
 
-    .mr4{
+    .mr4 {
         margin-right: 4px;
     }
 
-    .img3p{
+    .img3p {
         height: 100%;
         border-top: 1px solid transparent;
         background-position: 50% 50%;
@@ -706,6 +744,8 @@ export default {
     }
 
     .parent:hover .img3p, .parent:focus .img3p {
+        -webkit-transform: scale(1.02);
+        -ms-transform : scale(1.02);
         transform: scale(1.02);
     }
 
@@ -716,44 +756,46 @@ export default {
 
     /*BANDEAU 2P*/
 
-    .uno{
+    .uno {
         opacity: 0;
     }
-    .deuxio{
+
+    .deuxio {
         opacity: 0;
     }
-    .bandeau-deux-photos{
+
+    .bandeau-deux-photos {
         margin-bottom: 5px;
         width: 100%;
         display: flex;
         flex-direction: row;
-        min-height:300px;
+        min-height: 300px;
         max-height: 450px;
         height: 28vw;
     }
 
-    .b2p-texte{
+    .b2p-texte {
         display: flex;
         background-position: 50% 50%;
         width: 100%;
         margin-right: 5px;
     }
 
-    .img2p-one{
+    .img2p-one {
         background-position: 50% 50%;
         width: 100%;
         margin-right: 5px;
         background-size: cover;
     }
 
-    .img2p-two{
+    .img2p-two {
         display: flex;
         background-position: 50% 50%;
         width: 100%;
         background-size: cover;
     }
 
-    .img2p-two-texte{
+    .img2p-two-texte {
         font-size: 25px;
         padding: 20px;
     }
@@ -767,23 +809,24 @@ export default {
         height: 450px;
     }
 
-    .biglogo{
+    .biglogo {
         display: flex;
         height: 150px;
         padding-top: 25px;
     }
 
-    #img-big-logo{
+    #img-big-logo {
         width: 100%;
         height: auto;
     }
-    .expli-texte{
+
+    .expli-texte {
         display: flex;
         height: 280px;
     }
 
     /*CAROUSEL AVIS*/
-    #carousel-avis-small{
+    #carousel-avis-small {
         display: none;
     }
 
@@ -792,6 +835,7 @@ export default {
         display: flex;
         height: 400px;
     }
+
     .carousel-avis-container {
         margin: auto;
         width: 600px;
@@ -801,7 +845,7 @@ export default {
     }
 
     div#slider {
-        width:600px;
+        width: 600px;
         height: 350px;
         overflow: hidden;
         display: flex;
@@ -814,7 +858,7 @@ export default {
         float: left;
     }
 
-   figure {
+    figure {
         position: relative;
         width: 3600px;
         margin: 0;
@@ -823,32 +867,67 @@ export default {
     }
 
     @keyframes slidy {
-        0% { left: 0; opacity: 1}
-        19% { left: 0; opacity: 1}
-        20% { left: -100%; opacity: 1 }
-        39% { left: -100%; opacity: 1 }
-        40% { left: -200%; opacity: 1 }
-        59% { left: -200%; opacity: 1 }
-        60% { left: -300%; opacity: 1 }
-        79% { left: -300%; opacity: 1 }
-        80% { left: -400%; opacity: 1 }
-        99% { left: -400%; opacity: 1 }
-        100% { left: 0; opacity: 1}
+        0% {
+            left: 0;
+            opacity: 1
+        }
+        19% {
+            left: 0;
+            opacity: 1
+        }
+        20% {
+            left: -100%;
+            opacity: 1
+        }
+        39% {
+            left: -100%;
+            opacity: 1
+        }
+        40% {
+            left: -200%;
+            opacity: 1
+        }
+        59% {
+            left: -200%;
+            opacity: 1
+        }
+        60% {
+            left: -300%;
+            opacity: 1
+        }
+        79% {
+            left: -300%;
+            opacity: 1
+        }
+        80% {
+            left: -400%;
+            opacity: 1
+        }
+        99% {
+            left: -400%;
+            opacity: 1
+        }
+        100% {
+            left: 0;
+            opacity: 1
+        }
     }
 
     /*FOOTER*/
-    #footer{
+    #footer {
         background-color: #12171b;
         display: flex;
         flex-direction: row;
         padding: 60px 20px;
         color: white;
     }
+
     #contacts {
         min-width: 280px;
         width: 100%;
         padding: 20px;
     }
+
     #livraison {
         min-width: 280px;
         padding: 20px;
@@ -856,6 +935,7 @@ export default {
         border-left: dashed 1px rgba(191, 191, 191, .3);
         width: 100%;
     }
+
     #divers {
         min-width: 280px;
         width: 100%;
@@ -868,11 +948,13 @@ export default {
         display: flex;
         flex-direction: row-reverse;
     }
-    .surplus-content{
+
+    .surplus-content {
         padding: 30px;
     }
-    .btn-footer{
-        outline-style:none;
+
+    .btn-footer {
+        outline-style: none;
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s;
         background-color: #12171b;
@@ -888,12 +970,14 @@ export default {
     }
 
     .btn-footer:hover {
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
         transform: scale(1.2);
         opacity: 0.8;
     }
 
     .btn-newsletter {
-        outline-style:none;
+        outline-style: none;
         transition: ease .5s;
         background-color: transparent;
         height: 35px;
@@ -912,8 +996,8 @@ export default {
         font-size: 11px;
     }
 
-    input{
-        outline-style:none;
+    input {
+        outline-style: none;
         height: 25px;
         width: 220px;
         border-radius: 15px;
@@ -932,18 +1016,32 @@ export default {
     }
 
     @keyframes slide30FromBottom {
-       from    {transform: translateY(160px); opacity: 0;}
-       to  { transform: translateY(0px); opacity: 1;}
+        from {
+            -webkit-transform: translateY(160px);
+            -ms-transform: translateY(160px);
+            transform: translateY(160px);
+            opacity: 0;
+        }
+        to {
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
-    .run-fadeIn{
+    .run-fadeIn {
         animation: fadeIn ease-in 0.4s forwards;
         animation-delay: 0.2s;
     }
 
     @keyframes fadeIn {
-        from  {opacity: 0;}
-        to    { opacity: 1;}
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 
     /*WEB-RESPONSIVE*/
@@ -953,30 +1051,39 @@ export default {
         #nav {
             padding: 0;
         }
-        #nav .logo{
-         margin: 20px 15px;
+
+        #nav .logo {
+            margin: 20px 15px;
         }
+
         .menu {
             display: none;
         }
 
-        #burger{
+        #burger {
             display: flex;
             flex-direction: column;
             margin: 20px 15px;
         }
 
         /*ACA*/
-        .liencar{
+        .liencar {
             top: 30%;
         }
+
         .liencar a {
             font-size: 20px;
-          }
+        }
 
         @keyframes comeFB {
-            from { top: 18%; opacity: 0; }
-            to { top: 30%; opacity: 1; }
+            from {
+                top: 18%;
+                opacity: 0;
+            }
+            to {
+                top: 30%;
+                opacity: 1;
+            }
         }
 
         /*PRESENTATION*/
@@ -985,12 +1092,12 @@ export default {
         }
 
         /*BANDEAU 2P TEXTE*/
-       .img2p-two-texte{
-           font-size: 15px;
+        .img2p-two-texte {
+            font-size: 15px;
         }
 
-       .b2p-texte p{
-           font-size: 18px;
+        .b2p-texte p {
+            font-size: 18px;
         }
 
         /*FOOTER*/
@@ -1007,46 +1114,48 @@ export default {
     }
 
     @media (max-width: 600px) {
-    /*CAROUSEL AVIS*/
-    #carousel-avis {
-        display: none;
-    }
+        /*CAROUSEL AVIS*/
+        #carousel-avis {
+            display: none;
+        }
 
-    #carousel-avis-small {
-        opacity: 0;
-        display: flex;
-        margin-top: 25px;
-        height: 200px;
-    }
-    .carousel-avis-small-container {
-        margin: auto;
-        width: 300px;
-        height: 150px;
-        display: flex;
-        justify-content: center;
-    }
+        #carousel-avis-small {
+            opacity: 0;
+            display: flex;
+            margin-top: 25px;
+            height: 200px;
+        }
 
-    div#slider-small {
-        width: 300px;
-        height: 150px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
+        .carousel-avis-small-container {
+            margin: auto;
+            width: 300px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+        }
 
-    figure img {
-        width: 300px;
-        height: 150px;
-        float: left;
-    }
+        div#slider-small {
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-    figure {
-        position: relative;
-        width: 1500px;
-        margin: 0;
-        left: 0;
-        animation: 22s slidy infinite;
-    }
+        figure img {
+            width: 300px;
+            height: 150px;
+            float: left;
+        }
+
+        figure {
+            position: relative;
+            width: 1500px;
+            margin: 0;
+            left: 0;
+            -webkit-animation: 22s slidy infinite;
+            animation: 22s slidy infinite;
+        }
     }
 
 
@@ -1057,12 +1166,14 @@ export default {
         }
 
         /*EXPLICATION*/
-        #explication{
+        #explication {
             height: 400px;
         }
+
         .biglogo {
             height: 80px;
         }
+
         #img-big-logo {
             width: 90%;
             height: auto;
@@ -1086,10 +1197,11 @@ export default {
     }
 
     @media (min-width: 700px) {
-        #burger{
+        #burger {
             display: none;
         }
-        #sidebar{
+
+        #sidebar {
             display: none;
         }
     }
