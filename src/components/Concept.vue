@@ -14,6 +14,11 @@
                     <li><a class="white-nav-li-a" :class="{ 'black-nav-li-a' : navbarStatus }" href="/contact">Nous trouver</a></li>
                 </ul>
             </div>
+            <div id="burger">
+                <div class="line" :class="{ 'black-line' : navbarStatus }"></div>
+                <div class="line" :class="{ 'black-line' : navbarStatus }"></div>
+                <div class="line" :class="{ 'black-line' : navbarStatus }"></div>
+            </div>
         </div>
 
 <!--        ANIM CAROUSEL <a> -->
@@ -94,11 +99,11 @@
             </div>
             <div class="img2p-two bg-eight text-white">
                 <div class="marge-auto">
-                    <p style="font-size: 20px; padding: 20px;">
+                    <p class="img2p-two-texte">
                         Le site de votre restaurant, comme vous ne l'avez jamais vu.
                         Le site de votre restaurant, comme vous ne l'avez jamais vu.
-                        Le site de votre restaurant, comme vous ne l'avez jamais vu.
-                    </p></div>
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -116,7 +121,7 @@
         <div id="explication" :class="{'run-slide30FromBottom' : animExplicationStatus}">
             <div class="biglogo">
                <div class="marge-auto">
-                   <a href="/"><biglogo></biglogo></a>
+                   <img id="img-big-logo" src="../assets/biglogo.svg"/>
                </div>
             </div>
             <div class="expli-texte marge-auto">
@@ -153,7 +158,6 @@
 <!--        CAROUSEL AVIS-->
           <div id="carousel-avis" :class="{ 'run-slide30FromBottom' : animCarAvisStatus }">
               <div class="carousel-avis-container">
-
                   <div id="slider">
                       <figure>
                           <img src="../assets/carousel-avis-one.svg" alt="p1 alt"/>
@@ -162,10 +166,23 @@
                           <img src="../assets/carousel-avis-for.svg" alt="p1 alt"/>
                           <img src="../assets/carousel-avis-five.svg" alt="p1 alt"/>
                       </figure>
-
                   </div>
               </div>
           </div>
+
+        <div id="carousel-avis-small" :class="{ 'run-slide30FromBottom' : animCarAvisSmallStatus }">
+            <div class="carousel-avis-small-container">
+                <div id="slider-small">
+                    <figure>
+                        <img src="../assets/ca-small-one.svg" alt="p1 alt"/>
+                        <img src="../assets/ca-small-two.svg" alt="p1 alt"/>
+                        <img src="../assets/ca-small-three.svg" alt="p1 alt"/>
+                        <img src="../assets/ca-small-for.svg" alt="p1 alt"/>
+                        <img src="../assets/ca-small-five.svg" alt="p1 alt"/>
+                    </figure>
+                </div>
+            </div>
+        </div>
 
 
 <!--        FOOTER-->
@@ -211,7 +228,6 @@
 
 <script>
     import logo from "@/components/svg/logo";
-    import biglogo from "@/components/svg/biglogo";
     import Carousel from "@/components/carousel/Carousel";
     import CarouselSlide from "@/components/carousel/CarouselSlide";
 export default {
@@ -219,8 +235,7 @@ export default {
     components: {
       Carousel,
       CarouselSlide,
-      logo,
-      biglogo
+      logo
     },
     data () {
       return {
@@ -230,7 +245,8 @@ export default {
           animDeuxioStatus:'',
           animTercioStatus:'',
           animExplicationStatus:'',
-          animCarAvisStatus: ''
+          animCarAvisStatus: '',
+          animCarAvisSmallStatus: ''
       }
   },
     methods: {
@@ -301,18 +317,29 @@ export default {
             });
         });
 
+        let observer7 = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animCarAvisSmallStatus =true;
+                    observer.unobserve(carAvisSmallAnim);
+                }
+            });
+        });
+
         const presentationAnim = document.querySelector('.presentation-anim');
         const animExplication = document.getElementById('explication');
         const unoAnim = document.querySelector('.uno');
         const deuxioAnim = document.querySelector('.deuxio');
         const tercioAnim = document.querySelector('.tercio');
         const carAvisAnim = document.getElementById('carousel-avis');
+        const carAvisSmallAnim = document.getElementById('carousel-avis-small');
         observer.observe(presentationAnim);
         observer2.observe(animExplication);
         observer3.observe(unoAnim);
         observer4.observe(deuxioAnim);
         observer5.observe(tercioAnim);
         observer6.observe(carAvisAnim);
+        observer7.observe(carAvisSmallAnim);
     },
     destroyed () {
         window.removeEventListener('scroll', this.handleScroll);
@@ -464,6 +491,26 @@ export default {
 
     .white{
         background: white;
+    }
+
+    #burger {
+        float: right;
+        margin: 0;
+        padding: 10px 0;
+        display: flex;
+        width: 50px;
+        height: 50px;
+    }
+    .line {
+        width: 30px;
+        height: 3px;
+        opacity: 0.8;
+        margin-bottom: 5px;
+        background-color: white;
+    }
+
+    .black-line{
+        background-color: black;
     }
 
     /*CAROUSEL*/
@@ -621,6 +668,11 @@ export default {
         background-size: cover;
     }
 
+    .img2p-two-texte{
+        font-size: 25px;
+        padding: 20px;
+    }
+
     /*EXPLICATION*/
 
     #explication {
@@ -636,12 +688,20 @@ export default {
         padding-top: 25px;
     }
 
+    #img-big-logo{
+        width: 100%;
+        height: auto;
+    }
     .expli-texte{
         display: flex;
-        height: 300px;
+        height: 280px;
     }
 
     /*CAROUSEL AVIS*/
+    #carousel-avis-small{
+        display: none;
+    }
+
     #carousel-avis {
         opacity: 0;
         display: flex;
@@ -674,7 +734,7 @@ export default {
         width: 3600px;
         margin: 0;
         left: 0;
-        animation: 20s slidy infinite;
+        animation: 22s slidy infinite;
     }
 
     @keyframes slidy {
@@ -768,6 +828,7 @@ export default {
     }
 
     input{
+        outline-style:none;
         height: 25px;
         width: 220px;
         border-radius: 15px;
@@ -798,5 +859,149 @@ export default {
     @keyframes fadeIn {
         from  {opacity: 0;}
         to    { opacity: 1;}
+    }
+
+    /*WEB-RESPONSIVE*/
+
+    @media (max-width: 700px) {
+        /*NAVBAR*/
+        #nav {
+            padding: 0;
+        }
+        #nav .logo{
+         margin: 20px 15px;
+        }
+        .menu {
+            display: none;
+        }
+
+        #burger{
+            display: flex;
+            flex-direction: column;
+            margin: 20px 15px;
+        }
+
+        /*ACA*/
+        .liencar{
+            top: 30%;
+        }
+        .liencar a {
+            font-size: 20px;
+          }
+
+        @keyframes comeFB {
+            from { top: 18%; opacity: 0; }
+            to { top: 30%; opacity: 1; }
+        }
+
+        /*PRESENTATION*/
+        #texte-presentation {
+            font-size: 30px;
+        }
+
+        /*BANDEAU 2P TEXTE*/
+       .img2p-two-texte{
+           font-size: 15px;
+        }
+
+       .b2p-texte p{
+           font-size: 18px;
+        }
+
+        /*FOOTER*/
+        #footer {
+            flex-direction: column;
+            margin-top: 60px;
+        }
+
+        #contacts, #livraison, #divers {
+            padding: 10px;
+            border: none;
+        }
+    }
+
+    @media (max-width: 600px) {
+    /*CAROUSEL AVIS*/
+    #carousel-avis {
+        display: none;
+    }
+
+    #carousel-avis-small {
+        opacity: 0;
+        display: flex;
+        margin-top: 25px;
+        height: 200px;
+    }
+    .carousel-avis-small-container {
+        margin: auto;
+        width: 300px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+    }
+
+    div#slider-small {
+        width: 300px;
+        height: 150px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    figure img {
+        width: 300px;
+        height: 150px;
+        float: left;
+    }
+
+    figure {
+        position: relative;
+        width: 1500px;
+        margin: 0;
+        left: 0;
+        animation: 22s slidy infinite;
+    }
+    }
+
+
+    @media (max-width: 500px) {
+        /*PRESENTATION*/
+        #texte-presentation {
+            font-size: 24px;
+        }
+
+        /*EXPLICATION*/
+        #explication{
+            height: 400px;
+        }
+        .biglogo {
+            height: 80px;
+        }
+        #img-big-logo {
+            width: 90%;
+            height: auto;
+        }
+
+    }
+
+    @media (max-width: 400px) {
+        /*PRESENTATION*/
+        .presentation-anim {
+            height: 40px;
+        }
+
+        .startline::before, .startline::after {
+            width: 100px;
+        }
+
+        #texte-presentation {
+            font-size: 18px;
+        }
+    }
+
+    @media (min-width: 700px) {
+        #burger{
+            display: none;
+        }
     }
 </style>

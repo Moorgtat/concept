@@ -82,7 +82,7 @@
         margin: auto;
         color: black;
         font-size: 28px;
-        width: 500px;
+        width: 80%;
     }
     .btn-content {
         position: absolute;
@@ -104,4 +104,27 @@
         background-color: rgba(255,140,0,0.1);
     }
 
+    @media (max-height: 600px) {
+        .perfect-mid{
+            top:30%;
+        }
+
+        .texte{
+            margin-top: 30px;
+        }
+        .texte-container{
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 700px) {
+
+        .texte {
+            font-size: 20px;
+        }
+
+        .btn-content {
+            left: 80%;
+        }
+    }
 </style>
