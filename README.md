@@ -1,24 +1,21 @@
-# concept
-
-## Project setup
+# concept-one
 ```
-npm install
+ Design
 ```
 
-### Compiles and hot-reloads for development
+## Description
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+Un site concept basé sur VueJs avec des animations et un rendu moderne et responsive
 ```
 
-### Lints and fixes files
+### Features
 ```
-npm run lint
+Des transitions...
+De l'animation...
+Des Caroussels...
+Des FlexBoxs...
+Des Keyframes...
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Auteur
+Mathieu Le Cardinal
